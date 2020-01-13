@@ -7,6 +7,7 @@ import {getRequest} from './utils/api'
 import {postRequest} from './utils/api'
 import {deleteRequest} from './utils/api'
 import {putRequest} from './utils/api'
+import {initMenu} from './utils/utils'
 import 'element-ui/lib/theme-chalk/index.css'
 
 Vue.use(Element)
