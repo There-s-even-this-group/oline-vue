@@ -46,7 +46,16 @@ const routes = [
     meta:{
       title:'托福人分类页'
     }
+  },
+  {
+    path:'/toeflman/toelfsort/details',
+    name:'teolfsortdetails',
+    component : () => import('components/托福人/o3托福人详情页.vue'),
+    meta:{
+      title:'托福人详情页'
+    }
   }
+
 ]
 
 const router = new VueRouter({

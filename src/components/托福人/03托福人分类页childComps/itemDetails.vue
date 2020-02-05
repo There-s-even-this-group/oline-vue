@@ -16,7 +16,8 @@
         <slot name="item-footer-div">
           <div class="tfr_classifyTime">
             <span>所属分类:</span><a href="###">{{tfr_sort}}</a>
-            <span style="margin-left: 30px">发布日期：</span><span>{{publisdate}}</span>
+            <span STYLE="margin-left: 30px">发布日期：</span>
+            <span>{{publisdate}}</span>
             <div class="commDiv">
               <span class="glyphicon glyphicon-heart" style="color: #D92A11;"></span> <span>100</span>
               <span class="glyphicon glyphicon-user" style="color: #388BFF;"></span><span>20</span>
@@ -78,16 +79,13 @@
     overflow: hidden;
   }
   .tfr_classifyTime span {
-
   }
   .tfr_classifyTime a {
     display: block;
     height: 22px;
     text-align: left;
-
   }
-  .tfr_classifyTime .commDiv{
-    width: 100px;
+  .commDiv{
     padding-left: 10px;
   }
 

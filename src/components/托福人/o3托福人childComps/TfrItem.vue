@@ -51,7 +51,7 @@
           query: {
             tfr_sort: this.tfr_sort
           }
-           })
+        })
       }
     }
   }
