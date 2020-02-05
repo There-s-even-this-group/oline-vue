@@ -38,6 +38,14 @@ const routes = [
     meta:{
       title:'托福人首页'
     }
+  },
+  {
+    path:'/toeflman/toelfsort',
+    name:'teolfsort',
+    component : () => import('components/托福人/o3托福人分类页.vue'),
+    meta:{
+      title:'托福人分类页'
+    }
   }
 ]
 

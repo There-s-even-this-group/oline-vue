@@ -12,6 +12,7 @@
 <style lang="less">
   @import "assets/css/base.css";
   @import "assets/css/normalize.css";
+  @import "assets/css/bootstrap.min.css";
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
