@@ -14,14 +14,19 @@
       </template>
     </itemDetails>
   </div>
+  <div class="tfr_left">
+    <tfrPageList></tfrPageList>
+  </div>
 </div>
 </template>
 
 <script>
   import itemDetails from "./03托福人分类页childComps/itemDetails";
+  import tfrPageList from "./03托福人分类页childComps/tfrPageList";
     export default {
       components: {
         itemDetails,
+        tfrPageList
       },
         data() {
             return {
