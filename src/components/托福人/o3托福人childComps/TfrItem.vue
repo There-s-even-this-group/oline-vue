@@ -27,6 +27,12 @@
           return "听力/Listening"
         }
       },
+      tfr_Sort: {
+        type: String,
+        default(){
+          return "听力";
+        }
+      },
       tfr_details: {
         type: Array,
         default() {
@@ -49,7 +55,7 @@
         this.$router.push({
           path: '/toeflman/toelfsort',
           query: {
-            tfr_sort: this.tfr_sort
+            tfr_Sort: this.tfr_Sort
           }
         })
       }

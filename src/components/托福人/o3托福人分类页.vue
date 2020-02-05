@@ -22,8 +22,8 @@
 </template>
 
 <script>
-  import itemDetails from "./03托福人分类页childComps/itemDetails";
-  import tfrPageList from "./03托福人分类页childComps/tfrPageList";
+  import itemDetails from "./o3托福人分类页childComps/itemDetails";
+  import tfrPageList from "./o3托福人分类页childComps/tfrPageList";
     export default {
       components: {
         itemDetails,
@@ -42,14 +42,14 @@
         mounted: function () {
         },
       created() {
-          this.tfr_sort = this.$route.query.tfr_sort;
+          this.tfr_Sort = this.$route.query.tfr_Sort;
       },
       methods: {
         todetails() {
           this.$router.push({
             path: '/toeflman/toelfsort/details',
             query: {
-              tfr_sort: this.tfr_sort
+              tfr_Sort: this.tfr_Sort
             }
           })
         }

@@ -1,25 +1,23 @@
 <template>
   <div class="index_itemR">
-    <div class="index_itemRtitle">
-      <h3>热门活动</h3>
-      <a href="###" class="index_itemRMore">更多</a>
-    </div>
-    <div class="tfr_hotAction" v-for="(item,index) in hotAct.title">
-      <dl>
-        <dt><a href="#"><img src="~assets/img/托福人/tfr_1.png" width="281" height="85"></a></dt>
-        <dd><a href="#">{{hotAct.title[index]}}</a></dd>
-      </dl>
-    </div>
+    <tfr_-side-bar :titles="hotAct.titles" Rtitle="热门活动" :imgURLs="hotAct.imgs">
+    </tfr_-side-bar>
   </div>
 </template>
 
 <script>
+  import tfr_SideBar from "../../common/tfr_SideBar";
   export default {
     name: "TfrHotActivity",
+    components:{
+      tfr_SideBar
+    },
     data(){
       return {
         hotAct:{
-          title: ['热门活动标题','热门活动标题','热门活动标题']
+          titles: ['热门活动标题','热门活动标题','热门活动标题'],
+          imgs:[require("assets/img/托福人/tfr_1.png"),require("assets/img/托福人/tfr_1.png"),
+            require("assets/img/托福人/tfr_1.png")]
         }
       }
     }
@@ -27,18 +25,15 @@
 </script>
 
 <style scoped>
-  .index_itemR{
-    padding:15px 0; border-bottom:solid 1px #fafafa;}
-  .index_itemRtitle{
-    display: flex;
-    overflow:hidden;}
-  .index_itemRtitle h3{
-    width:auto;  height:26px; font-size:16px; line-height:26px; margin-bottom:10px; margin-left: 5px}
-  a.index_itemRMore{
-    margin-left: 200px;
-  }
-  a.index_itemRMore:hover{ height:26px; line-height:26px;  color:#666;}
 
+  .index_itemR{
+    display: inline-block;
+    padding:15px 0; border-bottom:solid 1px #fafafa;
+    text-align: left;
+  }
+  .index_itemR dl {
+    display: block;
+  }
   .tfr_hotAction{
     display: flex;
     border-bottom:solid 1px #dcdcdc;

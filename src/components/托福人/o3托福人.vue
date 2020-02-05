@@ -1,16 +1,20 @@
 <template>
   <div>
     <el-row :gutter="20">
-      <el-col :span="24" class="mian">
-        <div class="left-container left">1</div>
+      <el-col :span="24" class="main">
+        <div class="left-container left">这边是左边内容</div>
         <div class="container">
+          <slot name="contain">
         <TfrCategory></TfrCategory>
+          </slot>
         </div>
         <div class="right-container">
           <TfrAttendance></TfrAttendance>
           <TfrHomework></TfrHomework>
           <TfrHotGroup></TfrHotGroup>
+          <slot name="sideBar">
           <TfrHotActivity></TfrHotActivity>
+          </slot>
         </div>
       </el-col>
     </el-row>
@@ -74,7 +78,7 @@
     min-height: 36px;
     bottom: 30px;
   }
-  .mian{
+  .main{
     display: flex;
   }
   .left-container{
@@ -84,6 +88,7 @@
   }
   .container{
     flex: 3.3;
+    display: block;
   }
   .right-container {
     flex: 1.7;
