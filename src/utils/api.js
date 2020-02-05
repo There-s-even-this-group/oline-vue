@@ -2,6 +2,9 @@ import axios from 'axios'
 import {Message} from 'element-ui'
 
 axios.interceptors.request.use(config => {
+  //可以在这加请求响应动画
+  //可以在这做是否已登录的判断
+  console.log(config);
   return config;
 }, err => {
   Message.error({message: '请求超时!'});
