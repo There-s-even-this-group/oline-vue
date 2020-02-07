@@ -13,25 +13,34 @@
             <span>{{tfr_Classfy_Details}}</span>
           </div>
         </slot>
-        <slot name="item-footer-div">
-          <div class="tfr_classifyTime">
-            <span>所属分类:</span><a href="###">{{tfr_sort}}</a>
+        <div class="tfr_classifyTime">
+            <span>所属分类:</span><a href="###">{{tfr_Sort_type}}</a>
             <span STYLE="margin-left: 30px">发布日期：</span>
             <span>{{publisdate}}</span>
+          <delete-andedit>
+            <a href="" slot="delete" @click="deleteArticle" style="margin-left: 5px">删除</a>
+            <a href="" slot="edit" @click="editArticle" style="margin-left: 5px"> 编辑</a>
+          </delete-andedit>
+            <a href=""></a>
             <div class="commDiv">
-              <span class="glyphicon glyphicon-heart" style="color: #D92A11;"></span> <span>100</span>
-              <span class="glyphicon glyphicon-user" style="color: #388BFF;"></span><span>20</span>
+              <span class="glyphicon glyphicon-heart" style="color: #D92A11;"></span>
+              <span>100</span>
+              <span class="glyphicon glyphicon-user" style="color: #388BFF;"></span>
+              <span>20</span>
             </div>
-          </div>
-        </slot>
+        </div>
       </dd>
     </dl>
   </div>
 </template>
 
 <script>
+  import deleteAndedit from "../../common/deleteAndedit";
   export default {
     name: "itemDetails",
+    components: {
+      deleteAndedit,
+    },
     data(){
       return {
         publisdate:'2020-2-5',
@@ -41,13 +50,18 @@
       }
     },
     methods:{
-
+      deleteArticle() {
+        console.log('删除文章');
+      },
+      editArticle() {
+        console.log('编辑文章');
+      },
     },
     props:{
-      tfr_sort: {
+      tfr_Sort_type: {
         type: String,
         default() {
-          return "听力/Listening"
+          return "阅读"
         }
       }
     }
@@ -87,6 +101,14 @@
   }
   .commDiv{
     padding-left: 10px;
+  }
+  #delete {
+    color: #1b6d85;
+    margin-left: 5px;
+  }
+  #edit {
+    color: #1b6d85;
+  margin-left: 5px;
   }
 
 </style>

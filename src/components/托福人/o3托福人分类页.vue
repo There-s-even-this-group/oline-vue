@@ -1,7 +1,7 @@
 <template>
 <div class="doc1180 paddingT20 fn-clear">
   <div class="tfr_left" v-for="(item,index) in tfrclassfynum">
-    <itemDetails :tfr_sort="tfr_sort">
+    <itemDetails :tfr_Sort_type="tfr_Sort_type">
       <template v-slot:item-title-div>
         <div class="tfr_classifyh3">
           <a href="#" @click="todetails" style="text-decoration: none">
@@ -31,7 +31,7 @@
       },
         data() {
             return {
-              tfr_sort:'',
+              tfr_Sort_type:'',
               tfrclassfynum:[1,2,3,4],
               tfrClassfy_titles:['托福口语5个技巧带你入门'] ,
               tfr_Classfy_Details: ['对于很多打算考托福的同学来说，该如何准备托福口语是个很困扰的问题。其实，利用OG，分析录音，对于很多打算考托福的同学来说，'
@@ -42,14 +42,14 @@
         mounted: function () {
         },
       created() {
-          this.tfr_Sort = this.$route.query.tfr_Sort;
+          this.tfr_Sort_type = this.$route.query.tfr_Sort_type;
       },
       methods: {
         todetails() {
           this.$router.push({
             path: '/toeflman/toelfsort/details',
             query: {
-              tfr_Sort: this.tfr_Sort
+              tfr_Sort_type: this.tfr_Sort_type
             }
           })
         }

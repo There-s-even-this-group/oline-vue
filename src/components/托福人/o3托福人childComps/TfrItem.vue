@@ -27,7 +27,7 @@
           return "听力/Listening"
         }
       },
-      tfr_Sort: {
+      tfr_Sort_type: {
         type: String,
         default(){
           return "听力";
@@ -55,9 +55,10 @@
         this.$router.push({
           path: '/toeflman/toelfsort',
           query: {
-            tfr_Sort: this.tfr_Sort
+            tfr_Sort_type: this.tfr_Sort_type
           }
         })
+        console.log(this.tfr_Sort_type);
       }
     }
   }

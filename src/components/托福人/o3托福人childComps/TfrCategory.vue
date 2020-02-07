@@ -2,7 +2,7 @@
     <div class="tfr_left">
       <div v-for="(item,index) in tfr_sorts" class="tfr_itemLeft">
          <TfrItem :tfr_details="tfr_details" :tfr_sort="tfr_sorts[index]"
-                  :tfr_Sort="tfr_Sorts[index]" :perform="perform[index]"></TfrItem>
+                  :tfr_Sort_type="tfr_Sorts_type[index]" :perform="perform[index]"></TfrItem>
       </div>
     </div>
 </template>
@@ -35,7 +35,7 @@
             '资讯/Information','活动/Activities','机经/Prediction'];
         }
       },
-      tfr_Sorts: {
+      tfr_Sorts_type: {
         type: Array,
         default() {
           return ['听力','口语','阅读','写作','词汇',
