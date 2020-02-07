@@ -54,6 +54,14 @@ const routes = [
     meta:{
       title:'托福人详情页'
     }
+  },
+  {
+    path:'/toefmanpublic',
+    name:'toefmanpublic',
+    component: () => import('components/托福人/o3托福人发布页.vue'),
+    meta:{
+      title:'托福人发布页'
+    }
   }
 
 ]
