@@ -6,7 +6,7 @@
     </div>
     <div class="tfr_itemList">
       <ul v-for="(value) in tfr_details">
-        <li><a href="托福人详情页.html">{{value}}</a></li>
+        <li><a href="#" @click="toToelfDetails">{{value}}</a></li>
       </ul>
     </div>
   </div>
@@ -59,6 +59,14 @@
           }
         })
         console.log(this.tfr_Sort_type);
+      },
+      toToelfDetails() {
+        this.$router.push({
+          path: '/toeflman/toelfsort/details',
+          query: {
+            tfr_Sort_type: this.tfr_Sort_type
+          }
+        })
       }
     }
   }
