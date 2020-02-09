@@ -1,8 +1,8 @@
 <template>
     <div class="tfr_left">
       <div v-for="(item,index) in tfr_sorts" class="tfr_itemLeft">
-         <TfrItem :tfr_details="tfr_details" :tfr_sort="tfr_sorts[index]"
-                  :tfr_Sort_type="tfr_Sorts_type[index]" :perform="perform[index]"></TfrItem>
+         <TfrItem :articlelist="tfrArticle[perform[index]].list" :tfr_sort="tfr_sorts[index]"
+                  :tfr_Sort_type="perform[index]" :perform="perform[index]"></TfrItem>
       </div>
     </div>
 </template>
@@ -17,7 +17,17 @@
     data() {
       return {
         perform:['Listening','Speaking','Reading','Writing','Vocabulary','Information','Activities',
-        'Prediction']
+        'Prediction'],
+        tfrArticle: {
+          Listening: {page: 0,list: []},
+          Speaking: {page: 0,list: []},
+          Reading: {page: 0,list: []},
+          Writing: {page: 0,list: []},
+          Vocabulary: {page: 0,list: []},
+          Information: {page: 0,list: []},
+          Activities: {page: 0,list: []},
+          Prediction: {page: 0,list: []},
+        },
       }
     },
     props: {
@@ -41,16 +51,38 @@
           return ['听力','口语','阅读','写作','词汇',
             '资讯','活动','机经'];
         }
-      }
+      },
     },
+    created() {
+      this.getToeflmanHomeData('Listening')
+      this.getToeflmanHomeData('Speaking')
+      this.getToeflmanHomeData('Reading')
+      this.getToeflmanHomeData('Writing')
+      this.getToeflmanHomeData('Vocabulary')
+      this.getToeflmanHomeData('Information')
+      this.getToeflmanHomeData('Activities')
+      this.getToeflmanHomeData('Prediction')
+    },
+    mounted: function () {
+    },
+    methods: {
+      getToeflmanHomeData(type) {
+        this.postRequest('/tfrArticle/home',{articleType:type}).then(res =>{
+          console.log(res);
+          this.tfrArticle[type].list.push(...res.data.list);
+        }).catch(err =>{
+          console.log(err);
+        })
+      }
+    }
 
   }
 </script>
 
 <style scoped>
   .tfr_left{
-    display: block;
-    width:910px;
+    display: flex;
+    flex-wrap: wrap;
     overflow:hidden;
     font-family:"宋体"
   }

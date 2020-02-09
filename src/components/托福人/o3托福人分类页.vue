@@ -1,16 +1,16 @@
 <template>
 <div class="doc1180 paddingT20 fn-clear">
-  <div class="tfr_left" v-for="(item,index) in tfrclassfynum">
-    <itemDetails :tfr_Sort_type="tfr_Sort_type">
+  <div class="tfr_left" v-for="(item,index) in ArticleList.list">
+    <itemDetails :tfr_Sort_type="tfr_Sort_type" :publisdate="item.article_date">
       <template v-slot:item-title-div>
         <div class="tfr_classifyh3">
           <a href="#" @click="todetails" style="text-decoration: none">
-            <h3 >{{tfrClassfy_titles[0]}}</h3></a>
-          <div><a href="###" class="imgA"><img class="img" src="~assets/img/托福人/125x125.jpg"/> alex</a>
+            <h3 >{{item.article_title}}</h3></a>
+          <div><a href="###" class="imgA"><img class="img" src="~assets/img/托福人/125x125.jpg"/> {{item.article_author}}</a>
           </div>
         </div>
         <div class="tfr_classifyText">
-          <span>{{tfr_Classfy_Details[0]}}</span>
+          <span>{{item.article_content}}</span>
         </div>
       </template>
     </itemDetails>
@@ -24,7 +24,8 @@
 <script>
   import itemDetails from "./o3托福人分类页childComps/itemDetails";
   import tfrPageList from "./o3托福人分类页childComps/tfrPageList";
-    export default {
+
+  export default {
       components: {
         itemDetails,
         tfrPageList
@@ -34,15 +35,18 @@
               tfr_Sort_type:'',
               tfrclassfynum:[1,2,3,4],
               tfrClassfy_titles:['托福口语5个技巧带你入门'] ,
-              tfr_Classfy_Details: ['对于很多打算考托福的同学来说，该如何准备托福口语是个很困扰的问题。其实，利用OG，分析录音，对于很多打算考托福的同学来说，'
-              + '该如何准备托福口语是个很困扰的问题。其实，'
-              + '利用OG，分析录音对于很多打算考托福的同学来说，该如何准备托福口语是个很困扰的问题。其实，利用OG，分析录音，'],
+              tfr_Classfy_Details: [],
+              ArticleList: {
+                page: 0,
+                list: [],
+              },
             }
         },
         mounted: function () {
         },
       created() {
-          this.tfr_Sort_type = this.$route.query.tfr_Sort_type;
+        this.tfr_Sort_type = this.$route.query.tfr_Sort_type;
+        this.getToeflmanSortData(this.tfr_Sort_type)
       },
       methods: {
         todetails() {
@@ -51,6 +55,14 @@
             query: {
               tfr_Sort_type: this.tfr_Sort_type
             }
+          })
+        },
+        getToeflmanSortData(type) {
+          this.postRequest('/tfrArticle/home',{articleType:type}).then(res =>{
+            console.log(res);
+            this.ArticleList.list.push(...res.data.list);
+          }).catch(err =>{
+            console.log(err);
           })
         }
       }
@@ -74,6 +86,7 @@
   .tfr_classifyh3 .img{width: 30px;height: 30px;margin-left: -15px}
 
   .tfr_classifyText{
+    height: 100px;
     font-size:14px;
     line-height:24px;
     color:#999;

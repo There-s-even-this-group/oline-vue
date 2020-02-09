@@ -15,7 +15,7 @@
         </slot>
         <div class="tfr_classifyTime">
             <span>所属分类:</span><a href="###">{{tfr_Sort_type}}</a>
-            <span STYLE="margin-left: 30px">发布日期：</span>
+            <span STYLE="margin-left: 10px">发布日期：</span>
             <span>{{publisdate}}</span>
           <delete-andedit>
             <a href="" slot="delete" @click="deleteArticle" style="margin-left: 5px">删除</a>
@@ -43,7 +43,6 @@
     },
     data(){
       return {
-        publisdate:'2020-2-5',
         tfrClassfy_title:['托福口语5个技巧带你入门'] ,
         tfr_Classfy_Details: ['对于很多打算考托福的同学来说，该如何准备托福口语是个很困扰的问题。其实，利用OG，分析录音，对于很多打算考托福的同学来说，' +
         '该如何准备托福口语是个很困扰的问题。其实，' + '利用OG，分析录音对于很多打算考托福的同学来说，该如何准备托福口语是个很困扰的问题。其实，利用OG，分析录音，'],
@@ -63,7 +62,15 @@
         default() {
           return "阅读"
         }
-      }
+      },
+      publisdate: {
+        type:String,
+        default() {
+          return '2020-2-5';
+        }
+      },
+    },
+    computed: {
     }
   }
 </script>
@@ -84,7 +91,7 @@
 
 
   .tfr_classifyTime {
-    margin-top: 20px;
+    margin-top: 5px;
     display: flex;
     color:#999;
     font-size:14px;
@@ -93,6 +100,7 @@
     overflow: hidden;
   }
   .tfr_classifyTime span {
+    width: auto;
   }
   .tfr_classifyTime a {
     display: block;

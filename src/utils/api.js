@@ -4,6 +4,7 @@ import {Message} from 'element-ui'
 axios.interceptors.request.use(config => {
   //可以在这加请求响应动画
   //可以在这做是否已登录的判断
+  console.log('这里是请求前拦截');
   console.log(config);
   return config;
 }, err => {
@@ -11,6 +12,8 @@ axios.interceptors.request.use(config => {
   // return Promise.resolve(err);
 })
 axios.interceptors.response.use(data => {
+  console.log('这里是返回数据前拦截');
+  console.log(data);
   if (data.status && data.status == 200 && data.data.status == 500) {
     Message.error({message: data.data.msg});
     return;

@@ -41,6 +41,7 @@
                     username: this.loginForm.username,
                     password: this.loginForm.password
                 }).then(resp=> {
+                    console.log(resp);
                     _this.loading = false;
                     if (resp && resp.status == 200) {
                         var data = resp.data;

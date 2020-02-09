@@ -5,9 +5,9 @@
       <div class="tfr_left">
         <div class="tfr_Details">
           <div class="tfr_DetailsPic"><img src="~assets/img/托福人/850x430.png"></div>
-          <div class="tfr_DetailsTitle">{{ArticleTitle}}</div>
-          <div class="tfr_DetailsTime">发布于：<span>22：00</span><span>2015-12-29</span></div>
-          <div class="tfr_DetailsTime">发布人：<a href="###">alex</a></div>
+          <div class="tfr_DetailsTitle">{{Article[0].article_title}}</div>
+          <div class="tfr_DetailsTime">发布于：<span>22：00</span><span>{{Article[0].article_date}}</span></div>
+          <div class="tfr_DetailsTime">发布人：<a href="###">{{Article[0].article_author}}</a></div>
           <div class="tfr_DetailsFx"><a><img src="~assets/img/托福人/tfr_DetailsFx.png"></a></div>
           <div class=" tfr_DetailsMain">
             <tfr_ContentDetails></tfr_ContentDetails>
@@ -51,21 +51,30 @@
         tfr_SideBar
       },
       created() {
-        this.tfr_Sort = this.$route.query.tfr_Sort;
+        this.article_id = this.$route.query.article_id;
+        this.getToeflmanDetailData(this.article_id)
       },
         data() {
             return {
-              tfr_Sort:'',
+              article_id:'',
               ArticleTitle:'这里是标题文字标题',
               imgs:[require("assets/img/托福人/tfr_mstj.png"),require("assets/img/托福人/tfr_mstj.png"),
                 require("assets/img/托福人/tfr_mstj.png")],
               teacherName:["教师名字","教师名字","教师名字"],
+              Article: [],
             }
         },
         mounted: function () {
         },
         methods: {
-
+          getToeflmanDetailData(id) {
+            this.postRequest('/tfrArticle/ArticleDetail',{id:id}).then(res =>{
+              console.log(res);
+              this.Article.push(...res.data.list);
+            }).catch(err =>{
+              console.log(err);
+            })
+          }
         }
     }
 </script>

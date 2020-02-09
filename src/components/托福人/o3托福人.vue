@@ -5,7 +5,9 @@
         <div class="left-container left">这边是左边内容</div>
         <div class="container">
           <slot name="contain">
+            <keep-alive>
         <TfrCategory></TfrCategory>
+            </keep-alive>
           </slot>
         </div>
         <div class="right-container">
@@ -27,7 +29,6 @@
   import TfrHomework from "./o3托福人childComps/TfrHomework";
   import TfrHotGroup from "./o3托福人childComps/TfrHotGroup";
   import TfrHotActivity from "./o3托福人childComps/TfrHotActivity";
-  import {getToeflmanHomeData} from "network/toeflmanHome";
 
   export default {
       components :{
@@ -41,17 +42,8 @@
         return {
           tfr_details:['温格承诺追分施压切尔西 拒绝曼城挖角不卖小威','温格承诺追分施压切尔西 拒绝曼城挖角不卖小威','温格承诺追分施压切尔西 拒绝曼城挖角不卖小威',
             '温格承诺追分施压切尔西 拒绝曼城挖角不卖小威','温格承诺追分施压切尔西 拒绝曼城挖角不卖小威','温格承诺追分施压切尔西 拒绝曼城挖角不卖小威'],
-
         }
       },
-      created() {
-        // getToeflmanHomeData().then(res =>{
-        //   this.tfr_details = res.data.tfr_details
-        // })
-      },
-      mounted: function () {
-      },
-      methods: {}
     }
 </script>
 

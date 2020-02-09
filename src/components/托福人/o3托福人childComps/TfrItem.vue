@@ -5,8 +5,8 @@
       <a href="#" @click="toToelfSort" class="viewAll">view all</a>
     </div>
     <div class="tfr_itemList">
-      <ul v-for="(value) in tfr_details">
-        <li><a href="#" @click="toToelfDetails">{{value}}</a></li>
+      <ul v-for="(value,index) in articlelist">
+        <li><a href="#" @click="toToelfDetails(index)">{{value.article_title}}</a></li>
       </ul>
     </div>
   </div>
@@ -33,11 +33,10 @@
           return "听力";
         }
       },
-      tfr_details: {
+      articlelist: {
         type: Array,
         default() {
-          return ['温格承诺追分施压切尔西 拒绝曼城挖角不卖小威','温格承诺追分施压切尔西 拒绝曼城挖角不卖小威','温格承诺追分施压切尔西 拒绝曼城挖角不卖小威',
-            '温格承诺追分施压切尔西 拒绝曼城挖角不卖小威','温格承诺追分施压切尔西 拒绝曼城挖角不卖小威','温格承诺追分施压切尔西 拒绝曼城挖角不卖小威']
+          return [];
         }
       },
       perform: {
@@ -60,11 +59,11 @@
         })
         console.log(this.tfr_Sort_type);
       },
-      toToelfDetails() {
+      toToelfDetails(index) {
         this.$router.push({
           path: '/toeflman/toelfsort/details',
           query: {
-            tfr_Sort_type: this.tfr_Sort_type
+            article_id: this.articlelist[index].article_id
           }
         })
       }
