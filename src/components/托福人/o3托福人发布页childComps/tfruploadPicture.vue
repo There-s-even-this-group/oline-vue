@@ -1,11 +1,15 @@
 <template>
     <el-upload
             class="avatar-uploader"
-            action="https://jsonplaceholder.typicode.com/posts/"
+            ref="upload"
+            :action="basepath"
+            accept="image/jpeg,image/gif,image/png"
             :show-file-list="true"
             :on-progress="onAvatarUpload"
             :on-success="handleAvatarSuccess"
             :before-upload="beforeAvatarUpload">
+<!--            :http-request="uploadSectionFile"-->
+
       <div><span class="propaganda">宣传图片</span></div>
       <img v-if="imageUrl" :src="imageUrl" class="avatar">
       <i v-else class="el-icon-plus avatar-uploader-icon"></i>
@@ -18,7 +22,10 @@
     name: "tfruploadPicture",
     data() {
       return  {
-        imageUrl: ''
+        upload_name: '',//图片或视频名称
+        ad_url: '',//上传后的图片或视频URL
+        basepath:'/img/tfrRecieve',//上传UR
+        imageUrl:'',
       };
     },
     props:{
@@ -26,31 +33,33 @@
     },
     methods: {
       handleAvatarSuccess(res, file) {
+        // 显示上传成功的图片
         this.imageUrl = URL.createObjectURL(file.raw);
+        this.upload_name = file.name;
         console.log(res);
         console.log(file);
+        console.log('--------------');
       },
       beforeAvatarUpload(file) {
-        const isJPG = file.type === 'image/jpeg';
-        const isLt2M = file.size / 1024 / 1024 < 2;
+        console.log('上传之前');
+        console.log(file);
+        console.log('--------------');
+        const isLt2M = file.size / 1024 / 1024 < 5;
 
-        if (!isJPG) {
-          this.$message.error('上传头像图片只能是 JPG 格式!');
-        }
         if (!isLt2M) {
-          this.$message.error('上传头像图片大小不能超过 2MB!');
+          this.$message.error('上传头像图片大小不能超过 5MB!');
         }
-        return isJPG && isLt2M;
+        return isLt2M;
       },
       onAvatarUpload(event, file, fileList){
-        this.imageUrl = URL.createObjectURL(file.raw);
+
         console.log('正在上传');
       },
       uploaderror(err, file, fileList) {
         console.log(err);
         console.log(file);
         console.log(fileList);
-      }
+      },
     }
   }
 </script>

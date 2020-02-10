@@ -4,7 +4,7 @@
     <template v-slot:contain>
       <div class="tfr_left">
         <div class="tfr_Details">
-          <div class="tfr_DetailsPic"><img src="~assets/img/托福人/850x430.png"></div>
+          <div class="tfr_DetailsPic"><img :src="imgURL"></div>
           <div class="tfr_DetailsTitle">{{Article[0].article_title}}</div>
           <div class="tfr_DetailsTime">发布于：<span>22：00</span><span>{{Article[0].article_date}}</span></div>
           <div class="tfr_DetailsTime">发布人：<a href="###">{{Article[0].article_author}}</a></div>
@@ -52,11 +52,13 @@
       },
       created() {
         this.article_id = this.$route.query.article_id;
-        this.getToeflmanDetailData(this.article_id)
+        this.getToeflmanDetailData(this.article_id);
+        this.getToelfmanDetailTitleImg();
       },
         data() {
             return {
               article_id:'',
+              imgURL:'',
               ArticleTitle:'这里是标题文字标题',
               imgs:[require("assets/img/托福人/tfr_mstj.png"),require("assets/img/托福人/tfr_mstj.png"),
                 require("assets/img/托福人/tfr_mstj.png")],
@@ -74,6 +76,12 @@
             }).catch(err =>{
               console.log(err);
             })
+          },
+          getToelfmanDetailTitleImg() {
+            this.getRequest('/img/tfrGive').then( res => {
+              console.log(res.data);
+              this.imgURL = '/images/'+ res.data;
+            })
           }
         }
     }
@@ -81,7 +89,8 @@
 
 <style scoped>
   .tfr_left{width:100%px;  overflow:hidden;font-family:"宋体"}
-  .tfr_DetailsPic{width:850px;height:430px; overflow:hidden; margin-bottom:50px;}
+  .tfr_DetailsPic img
+  {width:850px;height:430px; overflow:hidden; margin-bottom:50px;}
   .tfr_DetailsTitle{font-size:22px; line-height:32px; font-weight:bold; margin-bottom:15px;}
   .tfr_DetailsTime{color:#999; font-size:12px; line-height:22px; margin-bottom:15px;}
   .tfr_DetailsTime span{ margin:0 5px 0 0;}
