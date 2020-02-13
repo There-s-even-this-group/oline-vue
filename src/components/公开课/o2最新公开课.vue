@@ -44,10 +44,10 @@
         flex: 1;
     }
     .abc{
-        flex:5;
+        flex:4;
     }
     .open-class{
-        display: inline-block;
+        display: block;
     }
     .page-list{
         display: inline-block;

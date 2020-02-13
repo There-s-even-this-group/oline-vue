@@ -48,10 +48,10 @@
         padding-left: 80px;
     }
     .center-review{
-        flex: 5;
+        flex: 4;
     }
     .open-class-review{
-        display: inline-block;
+        display: block;
     }
     a.open-class-back{
         width: 170px;
