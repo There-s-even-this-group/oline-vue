@@ -22,7 +22,7 @@
 <style scoped>
   .pageList{padding:70px 0 20px; overflow:hidden;}
   .pageList ul{display:inline-table; float:right; overflow:hidden;}
-  .pageList li{float:left; display:inline-table; height:33px; line-height:32px; margin:0 3px;}
+  .pageList li{display:inline-table; height:33px; line-height:32px; margin:0 3px;}
   .pageList li a{color:#65656;}
   .pageList li span{color:#009FD6;}
   .pageList li a.pret,

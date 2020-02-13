@@ -4,7 +4,8 @@
       <router-link to="/">Home</router-link> |
       <router-link to="/about">About</router-link>|
       <router-link to="/toeflman">托福人首页</router-link>|
-      <router-link to="/toefmanpublic">托福人发布页</router-link>
+      <router-link to="/toefmanpublic">托福人发布页</router-link>|
+      <router-link to="/open_class">公开课</router-link>|
     </div>
     <router-view/>
   </div>

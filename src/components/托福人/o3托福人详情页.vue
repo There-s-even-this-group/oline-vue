@@ -36,7 +36,7 @@
 <script>
   import tfrDetais from "./o3托福人";
   import asd from "./o3托福人分类页";
-  import tfrPageList from "./o3托福人分类页childComps/tfrPageList";
+  import tfrPageList from "../common/tfrPageList";
 
   import tfr_ContentDetails from "../common/tfr_ContentDetails";
   import tfr_ContentDetailsPl from "../common/tfr_ContentDetailsPl";

@@ -62,6 +62,14 @@ const routes = [
     meta:{
       title:'托福人发布页'
     }
+  },
+  {
+    path:'/open_class',
+    name:'openclass',
+    component: () => import( 'components/公开课/o2main.vue'),
+    meta :{
+      title:'公开课'
+    }
   }
 
 ]

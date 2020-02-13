@@ -23,7 +23,7 @@
 
 <script>
   import itemDetails from "./o3托福人分类页childComps/itemDetails";
-  import tfrPageList from "./o3托福人分类页childComps/tfrPageList";
+  import tfrPageList from "../common/tfrPageList";
 
   export default {
       components: {
