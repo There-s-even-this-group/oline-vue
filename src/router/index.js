@@ -70,6 +70,22 @@ const routes = [
     meta :{
       title:'公开课'
     }
+  },
+  {
+    path:'/courseDetails',
+    name:'courseDetails',
+    component: () => import( 'components/公开课/o2课程详细页.vue'),
+    meta :{
+      title:'课程详细页'
+    }
+  },
+  {
+    path:'/open_class/courseReview',
+    name:'courseReview',
+    component: () => import( 'components/公开课/o2往期回顾-课程回放页.vue'),
+    meta :{
+      title:'课程回放页'
+    }
   }
 
 ]

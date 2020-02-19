@@ -15,7 +15,8 @@ export default new Vuex.Store({
     isDotMap: new Map(),
     currentFriend: {},
     stomp: null,
-    nfDot: false
+    nfDot: false,
+    article_picture: '',
   },
   mutations: {
     initMenu(state, menus){
@@ -28,9 +29,15 @@ export default new Vuex.Store({
     logout(state){
       window.localStorage.removeItem('user');
       state.routes = [];
+    },
+    updateImgURL(state,imgurl) {
+      state.article_picture = imgurl;
     }
   },
   actions: {
+    postupdateImgURL(context,imgurl){
+      context.commit("updateImgURL",imgurl);
+    }
   },
   modules: {
   }

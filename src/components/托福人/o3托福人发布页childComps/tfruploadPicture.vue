@@ -36,6 +36,7 @@
         // 显示上传成功的图片
         this.imageUrl = URL.createObjectURL(file.raw);
         this.upload_name = file.name;
+        this.$store.dispatch('postupdateImgURL','toelfman/' + res)
         console.log(res);
         console.log(file);
         console.log('--------------');

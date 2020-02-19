@@ -22,7 +22,7 @@
         </dl>
             <div class="openBaoming">
                 <slot name="imgOfenter">
-                <a href="#" class="openClassBm">立即报名</a>
+                <a href="#" class="openClassBm" @click="courseDetails">立即报名</a>
                 </slot>
                 <span>已报名人数：<b>230人</b></span>
             </div>
@@ -32,7 +32,22 @@
 
 <script>
     export default {
-        name: "open_class_item"
+        name: "open_class_item",
+        data() {
+            return {
+
+            }
+        },
+        methods: {
+            courseDetails() {
+                this.$router.push({
+                    path:'/courseDetails',
+                    query:{
+
+                    }
+                })
+            },
+        }
     }
 </script>
 

@@ -6,17 +6,17 @@
         <div class="center-review">
             <div class="open-class-review">
              <open_class_item>
-                 <a href="#" slot="imgOfenter" class="open-class-back">去看回放</a>
+                 <a href="#" slot="imgOfenter" class="open-class-back" @click="courseDetails">去看回放</a>
              </open_class_item>
             </div>
             <div class="open-class-review">
                 <open_class_item>
-                    <a href="#" slot="imgOfenter" class="open-class-back">去看回放</a>
+                    <a href="" slot="imgOfenter" class="open-class-back" @click="courseDetails">去看回放</a>
                 </open_class_item>
             </div>
             <div class="open-class-review">
                 <open_class_item>
-                    <a href="#" slot="imgOfenter" class="open-class-back">去看回放</a>
+                    <a href="" slot="imgOfenter" class="open-class-back" @click="courseDetails">去看回放</a>
                 </open_class_item>
             </div>
         </div>
@@ -34,7 +34,16 @@
         },
         mounted: function () {
         },
-        methods: {}
+        methods: {
+            courseDetails() {
+                this.$router.push({
+                    path:'/open_class/courseReview',
+                    query:{
+
+                    }
+                })
+            },
+        }
     }
 </script>
 

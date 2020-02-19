@@ -2,7 +2,7 @@
     <div class="tfr_left">
       <div v-for="(item,index) in tfr_sorts" class="tfr_itemLeft">
          <TfrItem :articlelist="tfrArticle[perform[index]].list" :tfr_sort="tfr_sorts[index]"
-                  :tfr_Sort_type="perform[index]" :perform="perform[index]"></TfrItem>
+                  :tfr_Sort_type="perform[index]" :perform="perform[index]" v-loading="loading"></TfrItem>
       </div>
     </div>
 </template>
@@ -16,6 +16,7 @@
     },
     data() {
       return {
+          loading:true,
         perform:['Listening','Speaking','Reading','Writing','Vocabulary','Information','Activities',
         'Prediction'],
         tfrArticle: {
@@ -54,6 +55,7 @@
       },
     },
     created() {
+        this.loading=true
       this.getToeflmanHomeData('Listening')
       this.getToeflmanHomeData('Speaking')
       this.getToeflmanHomeData('Reading')
@@ -70,6 +72,7 @@
         this.postRequest('/tfrArticle/home',{articleType:type}).then(res =>{
           console.log(res);
           this.tfrArticle[type].list.push(...res.data.list);
+          this.loading=false
         }).catch(err =>{
           console.log(err);
         })
