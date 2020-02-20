@@ -1,7 +1,7 @@
 <template>
 <div class="doc1180 paddingT20 fn-clear" v-loading="loading">
   <div class="tfr_left" v-for="(item,index) in ArticleList.list" >
-    <itemDetails :tfr_Sort_type="tfr_Sort_type" :publisdate="item.article_date" >
+    <itemDetails :tfr_Sort_type="tfr_Sort_type" :publisdate="item.article_date" :visit="item.article_visit" :collect="item.article_collect">
       <template v-slot:item-title-div>
         <div class="tfr_classifyh3">
           <a href="#" @click="todetails" style="text-decoration: none">

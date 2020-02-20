@@ -1,19 +1,12 @@
 <template>
-  <div>
-    <tfrupload-picture></tfrupload-picture>
-    <div style="margin: 20px;"></div>
-    <div class="tfr-form">
-      <tfr-from></tfr-from>
-    </div>
-  </div>
+  <tfr-from></tfr-from>
+
 </template>
 
 <script>
-  import tfruploadPicture from "./o3托福人发布页childComps/tfruploadPicture";
   import tfrFrom from "./o3托福人发布页childComps/tfrFrom";
     export default {
       components:{
-        tfruploadPicture,
         tfrFrom
       },
         data() {

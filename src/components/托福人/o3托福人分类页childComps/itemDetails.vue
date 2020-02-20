@@ -24,9 +24,9 @@
             <a href=""></a>
             <div class="commDiv">
               <span class="glyphicon glyphicon-heart" style="color: #D92A11;"></span>
-              <span>100</span>
+              <span>{{collect}}</span>
               <span class="glyphicon glyphicon-user" style="color: #388BFF;"></span>
-              <span>20</span>
+              <span>{{visit}}</span>
             </div>
         </div>
       </dd>
@@ -60,6 +60,18 @@
       },
     },
     props:{
+      visit: {
+        type: Number,
+        default() {
+          return 0;
+        }
+      },
+      collect: {
+        type: Number,
+        default() {
+          return 0;
+        }
+      },
       tfr_Sort_type: {
         type: String,
         default() {
@@ -101,6 +113,7 @@
     line-height:22px;
     padding-left: 20px;
     overflow: hidden;
+    width: 600px;
   }
   .tfr_classifyTime span {
     width: auto;
@@ -111,6 +124,7 @@
     text-align: left;
   }
   .commDiv{
+
     padding-left: 10px;
   }
   #delete {
