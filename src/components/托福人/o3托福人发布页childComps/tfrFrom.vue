@@ -48,7 +48,7 @@
         return day.getFullYear() + '-' + day.getMonth() + '-' + day.getDay();
       },
       getimgURL: function () {
-        return this.$store.state.article_picture;
+        return this.$store.state.getters.imgURL;
       }
     },
     methods: {
@@ -58,7 +58,7 @@
         this.formLabelAlign.article_date = this.getDate;
         this.formLabelAlign.article_picture = this.getimgURL;
         this.postRequest('/tfrArticle/addArticle',this.formLabelAlign).then(res =>{
-          this.$store.dispatch('postupdateImgURL','')
+          this.$store.dispatch('imgURL/postupdateImgURL','')
           const h = this.$createElement;
           this.$notify({
             title: '提示信息',

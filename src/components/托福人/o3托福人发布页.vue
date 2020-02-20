@@ -1,8 +1,6 @@
 <template>
   <div>
-    <div class="upload-picture">
-      <tfrupload-picture></tfrupload-picture>
-    </div>
+    <tfrupload-picture></tfrupload-picture>
     <div style="margin: 20px;"></div>
     <div class="tfr-form">
       <tfr-from></tfr-from>

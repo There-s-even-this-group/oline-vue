@@ -59,7 +59,6 @@
             return {
               article_id:'',
               imgURL:'',
-              ArticleTitle:'这里是标题文字标题',
               imgs:[require("assets/img/托福人/tfr_mstj.png"),require("assets/img/托福人/tfr_mstj.png"),
                 require("assets/img/托福人/tfr_mstj.png")],
               teacherName:["教师名字","教师名字","教师名字"],

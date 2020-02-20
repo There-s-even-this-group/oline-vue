@@ -36,7 +36,7 @@
         // 显示上传成功的图片
         this.imageUrl = URL.createObjectURL(file.raw);
         this.upload_name = file.name;
-        this.$store.dispatch('postupdateImgURL','toelfman/' + res)
+        this.$store.dispatch('imgURL/postupdateImgURL','toelfman/' + res)
         console.log(res);
         console.log(file);
         console.log('--------------');
@@ -70,7 +70,13 @@
     color:#3c763d;
     box-shadow:inset 0 1px 1px rgba(0,0,0,.075);
   }
-  .avatar-uploader .el-upload {
+  .avatar-uploader{
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+  }
+   .el-upload {
     border: 1px dashed #d9d9d9;
     border-radius: 6px;
     cursor: pointer;

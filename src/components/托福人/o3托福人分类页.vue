@@ -1,7 +1,7 @@
 <template>
-<div class="doc1180 paddingT20 fn-clear">
-  <div class="tfr_left" v-for="(item,index) in ArticleList.list">
-    <itemDetails :tfr_Sort_type="tfr_Sort_type" :publisdate="item.article_date">
+<div class="doc1180 paddingT20 fn-clear" v-loading="loading">
+  <div class="tfr_left" v-for="(item,index) in ArticleList.list" >
+    <itemDetails :tfr_Sort_type="tfr_Sort_type" :publisdate="item.article_date" >
       <template v-slot:item-title-div>
         <div class="tfr_classifyh3">
           <a href="#" @click="todetails" style="text-decoration: none">
@@ -32,6 +32,7 @@
       },
         data() {
             return {
+              loading: true,
               tfr_Sort_type:'',
               tfrclassfynum:[1,2,3,4],
               tfrClassfy_titles:['托福口语5个技巧带你入门'] ,
@@ -45,6 +46,7 @@
         mounted: function () {
         },
       created() {
+        this.loading = true;
         this.tfr_Sort_type = this.$route.query.tfr_Sort_type;
         this.getToeflmanSortData(this.tfr_Sort_type)
       },
@@ -59,8 +61,8 @@
         },
         getToeflmanSortData(type) {
           this.postRequest('/tfrArticle/home',{articleType:type}).then(res =>{
-            console.log(res);
             this.ArticleList.list.push(...res.data.list);
+            this.loading=false;
           }).catch(err =>{
             console.log(err);
           })
