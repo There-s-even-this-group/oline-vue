@@ -5,6 +5,7 @@ Vue.use(VueRouter);
 
 //所有权限通用路由表
 //如首页和登录页和一些不用权限的公用页面
+//游客界面
 export const constantRouterMap = [
   {
     path: '/',
@@ -22,6 +23,7 @@ export const constantRouterMap = [
 
 //异步挂载的路由
 //动态需要根据权限加载的路由表
+//登录后访问的
 export const asyncRouterMap = [
   {
     path:  '/index',

@@ -18,7 +18,7 @@ const whiteList = ['/about','/auth-redirect','/'] // no redirect whitelist
 
 router.beforeEach(async(to, from, next) => {
   const hasToken = getToken();
-
+  document.title = to.meta.title;
   if (hasToken) {
     if (to.path === '/login') {
       next({path : '/'})
