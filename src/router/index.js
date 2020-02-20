@@ -1,34 +1,34 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
-import Main from '../components/首页.vue'
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
-const routes = [
+//所有权限通用路由表
+//如首页和登录页和一些不用权限的公用页面
+export const constantRouterMap = [
   {
     path: '/',
-    name: 'home',
-    component: Home,
-
+    name: 'Home',
+    component: () => import('@/views/Home'),
+    hidden: true
   },
   {
     path: '/about',
-    name: 'about',
-    // route level code-splitting
-    // this generates a separate chunk (about.[hash].js) for this route
-    // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue'),
-    meta:{
-      title:'登录'
-    }
-  },
+    name: 'About',
+    component: () => import('@/views/About'),
+    hidden: true
+  }
+];
+
+//异步挂载的路由
+//动态需要根据权限加载的路由表
+export const asyncRouterMap = [
   {
-    path: '/main',
-    name: 'home',
-    component: Main,
+    path:  '/index',
+    component: () => import('@/views/1'),
+    name: 'test',
     meta:{
-      title:'首页'
+      roles: ['user', 'normal']
     }
   },
   {
@@ -87,13 +87,19 @@ const routes = [
       title:'课程回放页'
     }
   }
+];
 
-]
+export function resetRouter() {
+  const newRouter = createRouter();
+  router.matcher = newRouter.matcher // reset router
+}
 
-const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
-  routes
-})
+//实例化vue的时候只挂载constantRouter
+const createRouter = () => new VueRouter({
+  scrollBehavior: () => ({ y: 0 }),
+  routes: constantRouterMap
+});
+
+const router = createRouter();
 
 export default router

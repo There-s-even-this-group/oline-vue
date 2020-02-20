@@ -1,19 +1,18 @@
 import axios from 'axios'
 import {Message} from 'element-ui'
+import { getToken } from "@/utils/auth";
+import store from "@/store";
 
 axios.interceptors.request.use(config => {
-  //可以在这加请求响应动画
-  //可以在这做是否已登录的判断
-  console.log('这里是请求前拦截');
-  console.log(config);
+  if (store.getters.token) {
+    config.headers['token'] = getToken();
+  }
   return config;
 }, err => {
   Message.error({message: '请求超时!'});
   // return Promise.resolve(err);
 })
 axios.interceptors.response.use(data => {
-  console.log('这里是返回数据前拦截');
-  console.log(data);
   if (data.status && data.status == 200 && data.data.status == 500) {
     Message.error({message: data.data.msg});
     return;
@@ -50,48 +49,12 @@ export const postRequest = (url, params) => {
         ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
       }
       return ret
-    }],
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
-    }
+    }]
   });
-}
-export const uploadFileRequest = (url, params) => {
-  return axios({
-    method: 'post',
-    url: `${base}${url}`,
-    data: params,
-    headers: {
-      'Content-Type': 'multipart/form-data'
-    }
-  });
-}
-export const putRequest = (url, params) => {
-  return axios({
-    method: 'put',
-    url: `${base}${url}`,
-    data: params,
-    transformRequest: [function (data) {
-      let ret = ''
-      for (let it in data) {
-        ret += encodeURIComponent(it) + '=' + encodeURIComponent(data[it]) + '&'
-      }
-      return ret
-    }],
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
-    }
-  });
-}
-export const deleteRequest = (url) => {
-  return axios({
-    method: 'delete',
-    url: `${base}${url}`
-  });
-}
+};
 export const getRequest = (url) => {
   return axios({
     method: 'get',
     url: `${base}${url}`
   });
-}
+};

@@ -1,5 +1,5 @@
 <template>
-    <el-form :rules="rules" class="login-container" label-position="left" :model="loginForm"
+    <el-form :rules="rules" class="login-container" label-position="left" :model="loginForm" ref="loginForm"
              label-width="0px" v-loading="loading">
         <h3 class="login_title">系统登录</h3>
         <el-form-item prop="username">
@@ -13,7 +13,7 @@
         <el-checkbox class="login_remember" v-model="checked"
                      label-position="left">记住密码</el-checkbox>
         <el-form-item style="width: 100%">
-            <el-button type="primary" style="width: 100%" @click="submitClick">登录</el-button>
+            <el-button type="primary" style="width: 100%" @click.native.prevent="submitClick">登录</el-button>
         </el-form-item>
     </el-form>
 </template>
@@ -30,25 +30,26 @@
                     username: 'wuyue',
                     password: 'wuyue88@'
                 },
-                loading: false
+                loading: false,
             }
         },
         methods: {
             submitClick: function () {
-                var _this = this;
-                this.loading = true;
-                this.postRequest('/login', {
-                    username: this.loginForm.username,
-                    password: this.loginForm.password
-                }).then(resp=> {
-                    console.log(resp);
-                    _this.loading = false;
-                    if (resp && resp.status == 200) {
-                        var data = resp.data;
-                        _this.$store.commit('login', data.obj);
-                        var path = _this.$route.query.redirect;
-                        _this.$router
-                            .replace({path: path == '/' || path == undefined ? '/toefmanpublic' : path});
+                this.$refs.loginForm.validate(valid => {
+                    if (valid) {
+                        this.loading = true;
+                        this.$store.dispatch('user/login', this.loginForm)
+                            .then(() => {
+                                this.$router.push({ path: this.redirect || '/'});
+                                next();
+                                this.loading = false
+                            })
+                            .catch(() => {
+                                this.loading = false
+                            })
+                    } else {
+                        console.log('error submit!!')
+                        return false
                     }
                 });
             }

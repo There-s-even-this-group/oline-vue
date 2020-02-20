@@ -1,18 +1,34 @@
 <template>
-  <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <div>
+    {{list}}<br>
+    {{roles}}
   </div>
 </template>
 
 <script>
-// @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
 
-export default {
-  name: 'home',
-  components: {
-    HelloWorld
+  import Cookies from "js-cookie";
+
+  export default {
+    data() {
+      return {
+        list : [],
+        roles : []
+      }
+    },
+    mounted: function () {
+      this.init()
+    },
+    methods: {
+      init(){
+        this.getRequest('/user/getMessage').then(resp=> {
+          if (resp && resp.status == 200) {
+            var data = resp.data;
+            this.list = data;
+          }
+        });
+        this.roles = this.$store.getters.roles;
+      }
+    }
   }
-}
 </script>
