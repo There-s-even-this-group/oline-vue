@@ -90,6 +90,14 @@ export const asyncRouterMap = [
     }
   },
   {
+    path:'/open_class/publish_class',
+    name:'/open_class/publish_class',
+    component: () => import('components/公开课/o2公开课-发布.vue'),
+    meta :{
+      title: '公开课发布'
+    }
+  },
+  {
     path:'/group_chat',
     name:'groupChat',
     component: () => import( 'components/群组聊/o8组群聊-组群聊.vue'),

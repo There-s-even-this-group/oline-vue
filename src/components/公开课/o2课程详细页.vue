@@ -4,7 +4,8 @@
             <a href="###" class="classInfo_ljbm">立即报名</a>
             <a href="###" class="classInfo_join">加入该活动群</a>
         </div>
-        <el-popover slot="download" placement="bottom-start" width="400" trigger="click">
+
+        <el-popover slot="download" placement="bottom-start" width="400" trigger="click" transition="fade-in-linear">
             <div class="flcb_cardDownload">
                 <h3 class="flcb_cardDownloadT">2015年1月精品课程下载</h3>
                 <ul v-for="item in num">
@@ -14,10 +15,10 @@
                         <a href="" class="flcb_cardDownloadXz" @click="ziliaoDownload(item)">&nbsp;</a>
                     </li>
                 </ul>
-
             </div>
             <el-button slot="reference" class="classInfo_iconxz">资料下载</el-button>
         </el-popover>
+
     </course-details>
 </template>
 

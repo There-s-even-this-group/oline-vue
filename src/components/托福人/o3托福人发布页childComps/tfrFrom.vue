@@ -5,6 +5,7 @@
             ref="upload"
             :action="basepath"
             :limit="1"
+            :data="{imgPath:'toelfman'}"
             :auto-upload="false"
             accept="image/jpeg,image/gif,image/png"
             :show-file-list="true"
@@ -76,9 +77,10 @@
     methods: {
       handleAvatarSuccess(res, file) {
         console.log(file);
+        console.log(res);
         console.log('--------------');
         //下面才是真正的上传文章
-        this.formLabelAlign.article_picture ='toelfman/' + res;
+        this.formLabelAlign.article_picture = 'toelfman/' + res;
         this.formLabelAlign.article_sort = this.getarticle_sort(this.formLabelAlign.article_sort);
         console.log('正在上传的url为：'+this.formLabelAlign.article_picture);
         this.postRequest('/tfrArticle/addArticle', this.formLabelAlign).then(res => {

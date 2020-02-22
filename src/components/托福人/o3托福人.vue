@@ -5,9 +5,7 @@
         <div class="left-container left">这边是左边内容</div>
         <div class="container">
           <slot name="contain">
-            <keep-alive>
         <TfrCategory></TfrCategory>
-            </keep-alive>
           </slot>
         </div>
         <div class="right-container">

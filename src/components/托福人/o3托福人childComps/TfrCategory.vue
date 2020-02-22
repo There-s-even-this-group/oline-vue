@@ -1,6 +1,6 @@
 <template>
     <div class="tfr_left">
-      <div v-for="(item,index) in tfr_sorts" class="tfr_itemLeft">
+      <div v-for="(item,index) in tfr_sorts" class="tfr_itemLeft" :key="item.id">
          <TfrItem :articlelist="tfrArticle[perform[index]].list" :tfr_sort="tfr_sorts[index]"
                   :tfr_Sort_type="perform[index]" :perform="perform[index]" v-loading="loading"></TfrItem>
       </div>
@@ -87,13 +87,13 @@
     display: flex;
     flex-wrap: wrap;
     overflow:hidden;
-    font-family:"宋体"
+    font-family:"宋体";
+    width: 1080px;
   }
   .tfr_itemLeft{
-    width:450px;
+    width:510px;
     height:316px;
     border-right:1px solid #dcdcdc;
-    float: left;
     margin-bottom:40px;
   }
 

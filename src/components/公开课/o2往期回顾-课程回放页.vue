@@ -25,6 +25,6 @@
 
 <style scoped>
     .hot-group{
-        flex: 1;
+        width: 350px;
     }
 </style>

@@ -74,7 +74,7 @@
 <style scoped>
   .tfr_itemLeftTop{overflow:hidden;width:390px;height:40px;border-bottom:solid 1px #dcdcdc; font-size:14px;line-height:40px;margin-left: 15px;}
   .tfr_itemLeftTop h3{width:170px; float:left;padding-left:5px; font-size:15px; }
-  .tfr_itemList{width:450px; padding-top:15px;margin-left: 10px}
+  .tfr_itemList{width:500px; padding-top:15px;margin-left: 10px}
   .tfr_itemList ul li{list-style: none;}
   .tfr_itemList li{overflow: hidden;height:40px; font-size:14px; line-height:40px; padding-left:25px; background:url(~assets/img/托福人/tfr_itemList.png) 10px center no-repeat;color:#8d8d8d;}
   .tfr_itemList li a{color:#8d8d8d;}
