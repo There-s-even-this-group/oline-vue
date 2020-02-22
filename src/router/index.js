@@ -88,7 +88,15 @@ export const asyncRouterMap = [
     meta :{
       title:'课程回放页'
     }
-  }
+  },
+  {
+    path:'/group_chat',
+    name:'groupChat',
+    component: () => import( 'components/群组聊/o8组群聊-组群聊.vue'),
+    meta :{
+      title:'群组聊'
+    }
+  },
 ];
 
 export function resetRouter() {
@@ -99,7 +107,9 @@ export function resetRouter() {
 //实例化vue的时候只挂载constantRouter
 const createRouter = () => new VueRouter({
   scrollBehavior: () => ({ y: 0 }),
-  routes: constantRouterMap
+  routes: constantRouterMap,
+  //history会去掉url的#，但是需要全路径访问，并且刷新会访问后端，所以默认的是hash模式
+  //mode: 'history'
 });
 
 const router = createRouter();
