@@ -4,7 +4,7 @@
             <div class="zql_itemWyjq"><a href="###" class="itemWyjqB btn btn-danger">我要建群</a></div>
             <div class="zql_item">
                 <ul>
-                    <!--<li class="zql_itemPic"><img src="../i/82x82.png" width="82" height="82"></li>-->
+                    <li class="zql_itemPic"><img src="../../../../assets/img/群组聊/82x82.png" alt="群头像" width="82" height="82"></li>
                     <li class="zql_itemText">
 
                         <div class="zql_itemTitle">群组名称</div>
@@ -17,11 +17,13 @@
                         <div class="zql_itemZt">
                             <a href="###">群信息</a>|<a href="###">退出该群</a>
                         </div>
-                        <a class="btn btn-primary" href="###">加入群</a>
+                        <div style="text-align: center">
+                            <a class="btn btn-primary" href="###">加入群</a>
+                        </div>
                     </li>
                 </ul>
                 <ul>
-                    <!--<li class="zql_itemPic"><img src="../i/82x82.png" width="82" height="82"></li>-->
+                    <li class="zql_itemPic"><img src="../../../../assets/img/群组聊/82x82.png" alt="群头像" width="82" height="82"></li>
                     <li class="zql_itemText">
                         <div class="zql_itemTitle">群组名称</div>
                         <div class="zql_itemTime">建群时间：2014-12-29</div>
@@ -32,7 +34,9 @@
                         <div class="zql_itemZt">
                             <a href="###">群信息</a>|<a href="###">退出该群</a>
                         </div>
-                        <a class="btn btn-success" href="###">聊天室</a>
+                        <div style="text-align: center">
+                            <a class="btn btn-success" href="###">聊天室</a>
+                        </div>
                     </li>
                 </ul>
             </div>

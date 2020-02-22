@@ -50,6 +50,7 @@
   @import "assets/css/base.css";
   @import "assets/css/normalize.css";
   @import "assets/css/bootstrap.min.css";
+  @import "assets/css/toefl.css";
   .doc1180{width:1180px; margin:0 auto}
   .flink{background:#F0F0F0; padding-bottom:20px;}
   .flinkTop{ background:#68BF4A; height:3px; border-bottom:solid 1px #A4D991;border-top:solid 1px #A4D991;}
