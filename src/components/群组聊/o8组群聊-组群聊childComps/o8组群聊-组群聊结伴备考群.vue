@@ -1,10 +1,21 @@
-<template>
-    
+<<template>
+    <div><groupInfo/></div>
 </template>
 
 <script>
+    import groupInfo from "./common/groupinfo";
     export default {
-        name: "结伴备考群"
+        components: {
+            groupInfo,
+        },
+        data() {
+            return {
+
+            };
+        },
+        methods: {
+
+        }
     }
 </script>
 

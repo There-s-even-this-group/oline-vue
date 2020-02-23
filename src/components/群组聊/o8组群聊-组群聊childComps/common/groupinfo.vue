@@ -1,4 +1,11 @@
 <template>
+    <!doctype html>
+    <html>
+    <head>
+        <meta charset="utf-8">
+        <title>组群聊-组群聊</title>
+    </head>
+    <body>
     <div class="doc1180 paddingT20 fn-clear"><!--页面左侧内容-->
         <div class="tfr_left">
             <div class="zql_itemWyjq"><a href="###" class="itemWyjqB btn btn-danger">我要建群</a></div>
@@ -15,7 +22,7 @@
                     <li class="zql_itemButton">
                         <div class="zql_itemNum">1234人已加入</div>
                         <div class="zql_itemZt">
-                            <a href="###">群信息</a>|<a href="###">退出该群</a>
+                            <a @click="groupDetail">群信息</a>|<a href="###">退出该群</a>
                         </div>
                         <div style="text-align: center">
                             <a class="btn btn-primary" href="###">加入群</a>
@@ -32,10 +39,10 @@
                     <li class="zql_itemButton">
                         <div class="zql_itemNum">1234人已加入</div>
                         <div class="zql_itemZt">
-                            <a href="###">群信息</a>|<a href="###">退出该群</a>
+                            <a @click="groupDetail">群信息</a>|<a href="###">退出该群</a>
                         </div>
                         <div style="text-align: center">
-                            <a class="btn btn-success" href="###">聊天室</a>
+                            <a class="btn btn-success" @click="groupChatRoom">聊天室</a>
                         </div>
                     </li>
                 </ul>
@@ -56,11 +63,43 @@
         <!--页面左侧内容 end-->
         <!--页面右侧内容-->
     </div>
+
+    </body>
+    </html>
 </template>
 
 <script>
     export default {
+        components: {
 
+        },
+        data() {
+          return {
+
+          }
+        },
+        methods: {
+            groupDetail() {
+                this.$router.push({
+                    path:'/group_detail',
+                    query:{
+
+                    }
+                })
+            },
+            groupChatRoom() {
+                this.$router.push({
+                    path:'/group_chatRoom',
+                    query:{
+
+                    }
+                })
+            },
+
+        },
+        mounted() {
+
+        }
     }
 </script>
 

@@ -1,7 +1,16 @@
 @charset "utf-8";
 /*修饰布局的css，从老师的toefl.css抄过来的，改了其中的图片路径，其他都没变*/
-
+/*groupinfo*/
 .tfr_left{width:850px; float:left; overflow:hidden;font-family:"宋体"}
+
+.zql_bqgl{overflow:hidden; border-bottom:1px solid #dcdcdc; padding-bottom:20px;}
+.zql_bqgl ul{width:288px; overflow:hidden;}
+.zql_bqgl li{width:60px; height:60px; overflow:hidden; float:left; margin-right:12px;}
+.zql_bqgl li img{width:60px; height:60px;}
+.zql_chengyuan {overflow:hidden; background:#eee;  padding:15px 0 15px 30px;}
+.zql_chengyuan ul{width:246px; overflow:hidden; height:288px; overflow-y:auto;}
+.zql_chengyuan li{width:60px; height:60px; overflow:hidden; float:left; margin:6px;}
+.zql_chengyuan li img{width:60px; height:60px;}
 .zql_Top{overflow:hidden; border-bottom:solid 1px #333; padding:0 0 20px 20px;}
 .zql_Top li{float:left;}
 .zql_TopPic{width:82px; height:82px; overflow:hidden;}
@@ -22,10 +31,21 @@
 .zql_TopTime{padding-left:10px; font-size:14px; line-height:30px;color:#999;}
 .zql_TopTime span{ margin:0 10px;}
 .zql_TopTime .blue{color:#009FD6; font-weight:normal;}
-.zql_TopButton{width:100px; padding-top:25px;}
-.zql_itemWyjq{padding:0 25px 10px 0; overflow:hidden;}
-a.zql_itemWyjqB{width:70px; height:32px; float:right; background: url(../img/群组聊/zql_itemWyjqB.png) 0 0 no-repeat ; line-height:32px;color:#fff; display:block; font-size:12px; padding-left:44px}
-a.zql_itemWyjqB:hover{background: url(../img/群组聊/zql_itemWyjqB.png) -120px 0 no-repeat ;}
+.zql_Body{}
+.zql_Body dl{overflow:hidden;border-bottom:solid 1px #dcdcdc; padding:30px 0 20px 40px;}
+.zql_Body dt{width:60px; height:60px; float:left; overflow:hidden; }
+.zql_Body dt img{width:60px; height:60px;}
+.zql_Body dd{width:725px; float:right;font-size:16px;color:#333;}
+.zql_BodyT{background:#f0f0f0; border-radius:2px; padding:15px; line-height:26px; position:relative;}
+.zql_BodyTjt{width:16px; height:13px; position:absolute; top:-7px; left:50px; z-index:2;
+    background:url(../img/群组聊/zql_BodyT.png) 0 0 no-repeat}
+.zql_BodyTitle{font-weight:bold; margin-bottom:20px;}
+.zql_BodyTitle span{margin-right:15px;}
+.zql_Bottom{padding-bottom:30px;}
+.zql_BottomTitle{width:830px; height:30px; font-size:16px; line-height:30px; padding:10px 15px; border:none; background:#eeeeee;}
+.zql_BottomInput{height:98px; border:solid 1px #eee; padding:10px;width:828px}
+a.zql_BottomButton{width:100px; height:32px; background:#009FD6; border-radius:3px; display:block;color:#fff; text-align:center; line-height:32px; float:right;}
+
 .zql_item{}
 .zql_item ul{overflow:hidden; border-bottom:solid 1px #dcdcdc; padding:20px 0 20px 20px;}
 .zql_item li{float:left;}
@@ -49,6 +69,21 @@ a.zql_itemWyjqB{width:70px; height:32px; float:right; background: url(../img/群
 a.zql_itemWyjqB:hover{background: url(../img/群组聊/zql_itemWyjqB.png) -120px 0 no-repeat ;}
 .zql_itemR{border-bottom:solid 1px #fafafa;}
 .zql_itemRtitle{overflow:hidden;}
+.zql_Rleft{width:55px; height:50px; line-height:50px; color:#fff; text-align:center; background:#E43224; float:left;}
+.zql_Rright{width:215px; height:50px; font-size:16px; line-height:50px; color:#fff;background:#009FD6; padding-left:10px; float:right;}
+.zql_Rmain{border:solid 1px #dcdcdc; border-top:none; margin-bottom:30px;}
+.zql_Rmain li{height:65px;border-bottom:solid 1px #dcdcdc;}
+.zql_Rmain li:last-child{border-bottom:none;}
+.zql_RtopTen{width:55px; height:50px; float:left; line-height:65px; text-align:center; font-size:24px;}
+.zql_RmainText{ overflow:hidden;width:195px; float:right; padding:0 10px;}
+.zql_RmainText h3{line-height:24px; padding-top:10px;color:#555;}
+.zql_Rjoin{overflow:hidden;}
+.zql_Rjoin span{height:18px; display:inline-table; float:left; margin-right:10px;line-height:20px;color:#999;}
+.zql_Rjoin a{width:18px; height:18px; display:inline-table; float:left; background:url(../img/群组聊/zql_Rjoin.png) 0 0 no-repeat;text-indent:-999px; line-height:20px;}
+.zql_Rjoin a:hover{background:url(../img/群组聊/zql_Rjoin.png) -20px 0 no-repeat;}
+
+
+
 
 .pageList{padding:70px 0 20px; overflow:hidden;}
 .pageList ul{display:inline-table; float:right; overflow:hidden;}
@@ -61,3 +96,101 @@ a.zql_itemWyjqB:hover{background: url(../img/群组聊/zql_itemWyjqB.png) -120px
 /*去掉li和ul前面的小黑点*/
 ul{list-style: none;}
 li{list-style: none;}
+
+/*组群详细页*/
+.doc1180{width:1180px; margin:0 auto}
+.doc910{width:910px;}
+.doc850{width:850px;}
+.doc280{width:280px;}
+.doc230{width:230px;}
+.crumbs_patch{color:#999; line-height:22px; font-size:12px;padding:33px 0 15px;}
+.crumbs_patch a{margin-right:10px;}
+.qzl_CyTeamLeft{width:580px;/*float:right;*/}/*此处不要设置float:right属性*/
+.qzl_CyTeamRight{width:580px;/*float:right;*/}
+.qzl_CyTeamLeft ul,
+.qzl_CyTeamRight ul{width:600px;}
+.qzl_CyTeam{overflow:hidden;}
+.qzl_CyTeamTitle{height:54px; border-top:solid 1px #dcdcdc; background:url(../img/群组聊/classInfo_Button.png) 0 -195px no-repeat; line-height:54px;}
+.qzl_CyTeamTitle h3{width:120px; text-align:center; font-size:16px;color:#009FD6;}
+.qzl_CyTeamBody{overflow:hidden;}
+.qzl_CyTeamBody ul.qzl_CyTeam1200{width:1200px;}
+.qzl_CyTeamBody li{width:90px; height:120px; float:left; margin:0 30px 20px 0;position: relative;}
+.qzl_CyTeamBody li .mangerType {
+    position: absolute;top: 5px;left: 5px;color: red;
+}
+.qzl_CyTeamPic{width:90px; height:90px; overflow:hidden;}
+.qzl_CyTeamPic img{width:90px; height:90px;}
+.qzl_CyTeamName{text-align:center; line-height:30px;}
+.qzl_CyTop{padding-top:125px; background:url(../img/群组聊/qzl_CyTeamBg.png) 0 0 no-repeat;}
+.qzl_CyInfo{padding-bottom:60px;}
+.qzl_CyInfo ul{overflow:hidden;padding-bottom:60px;}
+.qzl_CyInfo li{float:left;}
+.qzl_CyInfoLeft{width:180px;}
+.qzl_CyInfoMid{width:800px;}
+.qzl_CyInfo li.qzl_CyInfoRight{width:190px; float:right;}
+.qzl_CyInfoPic,
+.qzl_CyInfoPic img{width:120px; height:120px; }
+.qzl_CyInfoPic{overflow:hidden; margin:0 auto;}
+a.qzl_CyInfoBut{width:160px; height:41px; display:block; background:url(../img/群组聊/qzl_CyInfoBut.png) 0 0 no-repeat; padding-left:50px; line-height:41px; color:#fff;}
+.qzl_CyInfoOut{color:#333; font-size:12px;width:160px; text-align:center;}
+.qzl_CyInfoOut span{margin-right:10px;}
+.qzl_CyInfoOut a{color:#009FD6; margin-left:10px; line-height:30px;}
+.qzl_CyInfoMain h3{line-height:34px; font-size:24px; padding-left:10px;}
+.qzl_CyInfoTime{color:#999; line-height:30px;}
+.qzl_CyInfoTime span{ margin:0 10px;}
+.qzl_CyInfoTime .blue{color:#009FD6;}
+.qzl_CyInfoWz{color:#555; line-height:30px; padding-left:10px;}
+.qzl_CyInfoDl{overflow:hidden; margin-bottom:30px;}
+.qzl_CyInfoDl dt{width:150px; float:left; font-size:32px; height:58px; line-height:58px; background:url(../img/群组聊/qzl_CyInfoDl.png) 125px 0 no-repeat;}
+.qzl_CyInfoDl dd{width:1000px; padding-right:30px; float:right;}
+
+.index_itemR{padding:15px 0; border-bottom:solid 1px #fafafa;}
+.index_itemRtitle{overflow:hidden;}
+.index_itemRtitle h3{width:200px; float:left; height:26px; font-size:16px; line-height:26px; margin-bottom:10px; display:inline-table;}
+a.index_itemRMore,
+a.index_itemRMore:hover{ height:26px; line-height:26px; display:inline-table; float:right;color:#666;}
+.index_itemRHot{}
+.index_itemRHot dl{overflow:hidden; margin-bottom:20px;}
+.index_itemRHot dt{width:48px; height:48px; float:left;}
+.index_itemRHot dt img{width:48px; height:48px;}
+.index_itemRHot dd{width:210px; height:48px; overflow:hidden; float:right;}
+.index_itemRHotName,
+.index_itemRHotNum{height:22px; display:inline-table; float:left;font-size:12px; color:#999; line-height:22px;}
+.index_itemRHotName{color:#68BF4A; padding-right:10px;}
+.index_itemRHotPic{padding:3px 10px 0 0;display:inline-table;float:left;}
+.index_itemRHotText{height:24px; font-size:12px; line-height:22px;color:#999; overflow:hidden;}
+.index_itemROpen{}
+.index_itemROpen dl{overflow:hidden; margin-bottom:20px; border-bottom:dashed 1px #CCC; padding-bottom:10px;}
+.index_itemROpen dl:last-child{border-bottom:none; padding-bottom:0;}
+.index_itemROpen dt{width:48px; height:52px; float:left; background:#F2F2F2;color:#585858;}
+.index_itemROpen dt.now{ background:#68BF4A; color:#fff;}
+.index_itemROpenM{font-size:12px; text-align:center; line-height:18px; padding-top:5px;}
+.index_itemROpenD{font-size:20px; text-align:center; line-height:24px;}
+.index_itemROpen dd{width:210px;float:right;}
+.index_itemROpenTitle{font-size:12px; color:#68BF4A; line-height:18px; height:36px; overflow:hidden;}
+.index_itemROpenTitle a,
+.index_itemROpenTitle a:hover{color:#68BF4A}
+.index_itemROpenText{height:24px; font-size:12px; line-height:22px;color:#999; overflow:hidden;}
+.index_itemROpenText span{ margin-right:10px;}
+.index_itemRLaoshi{}
+.index_itemRLaoshi dl{overflow:hidden; margin-bottom:10px;}
+.index_itemRLaoshi dt{width:62px; height:65px; float:left; padding-top:5px;}
+.index_itemRLaoshi dt img{width:62px; height:65px;}
+.index_itemRLaoshi dd{width:200px;float:right;}
+.index_itemRLaoshiTitle{font-size:14px; line-height:24px;}
+.index_itemRLaoshiText{height:44px; font-size:12px; line-height:22px;color:#666; overflow:hidden;}
+.index_Active{}
+.index_Active dl{overflow:hidden; margin-bottom:20px;}
+.index_Active dt{width:125px; height:80px; float:left; padding-top:5px;}
+.index_Active dt img{width:125px; height:80px;}
+.index_Active dd{width:140px; overflow:hidden; float:right;}
+.index_ActiveTitle{height:28px;font-size:16px; color:#333; line-height:26px; overflow:hidden}
+.index_ActiveNum{color:#999; font-size:12px; line-height:22px; margin-bottom:5px;}
+a.index_ActiveB,
+a.index_ActiveB:hover{display:block;width:120px; height:28px; text-align:center;color:#fff; background:#A6E192; border-radius:3px; line-height:28px;}
+.index_homework{}
+.index_homework dt{ overflow:hidden; margin-bottom:7px;}
+.index_homeworkIcon{width:20px; height:20px; display:block; float:left;}
+a.index_homeworkTitle,
+a.index_homeworkTitle:hover{color:#333; height:20px; line-height:20px; width:248px; float:right; display:block;}
+.index_homework dd{color:#555; font-size:14px; line-height:24px; height:24px; overflow:hidden; margin-bottom:10px;}
