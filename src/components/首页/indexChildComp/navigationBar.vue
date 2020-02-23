@@ -12,7 +12,7 @@
             return {
                 navList:[
                     {name:'/',navItem:'首页'},
-                    {name:'/toeflman',navItem:'托福人首页'},
+                    {name:'/toeflman',navItem:'托福人'},
                     {name:'/toeflman/toefmanpublic',navItem:'托福人发布页'},
                     {name:'/open_class',navItem:'公开课'},
                     {name:'/group_chat',navItem:'群组聊'},
