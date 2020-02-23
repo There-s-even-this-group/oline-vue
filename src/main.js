@@ -8,7 +8,7 @@ import {postRequest} from './utils/api'
 import {getToken} from "@/utils/auth";
 import 'element-ui/lib/theme-chalk/index.css'
 import {Message} from 'element-ui'
-import {whiteList} from './router/moudles/whiteList'
+import whiteList from './router/moudles/whiteList'
 
 Vue.use(Element)
 Vue.prototype.getRequest = getRequest;
