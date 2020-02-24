@@ -7,14 +7,14 @@ import {getRequest} from './utils/api'
 import {postRequest} from './utils/api'
 import {getToken} from "@/utils/auth";
 import 'element-ui/lib/theme-chalk/index.css'
+import {Message} from 'element-ui'
+import whiteList from './router/moudles/whiteList'
 
 Vue.use(Element)
 Vue.prototype.getRequest = getRequest;
 Vue.prototype.postRequest = postRequest;
 
 Vue.config.productionTip = false
-
-const whiteList = ['/about','/auth-redirect','/'] // no redirect whitelist
 
 router.beforeEach(async(to, from, next) => {
   const hasToken = getToken();
@@ -34,7 +34,6 @@ router.beforeEach(async(to, from, next) => {
 
           // generate accessible routes map based on roles
           const accessRoutes = await store.dispatch('permission/generateRoutes', role);
-
           // dynamically add accessible routes
           router.addRoutes(accessRoutes);
 
@@ -56,7 +55,7 @@ router.beforeEach(async(to, from, next) => {
       next()
     } else {
       // other pages that do not have permission to access are redirected to the login page.
-      next('/about')
+      next('/online/about')
     }
   }
 });

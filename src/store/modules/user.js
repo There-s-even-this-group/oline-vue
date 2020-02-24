@@ -1,6 +1,8 @@
 import {postRequest,getRequest} from "@/utils/api";
 import {getToken,setToken,removeToken} from "@/utils/auth";
 import router,{reserRouter} from "@/router";
+import ro from "element-ui/src/locale/lang/ro";
+import da from "element-ui/src/locale/lang/da";
 
 const state = {
     token: getToken(),
@@ -124,7 +126,29 @@ const actions = {
 
             resolve()
         })
-    }
+    },
+
+    /**
+     * 注册
+     * @param commit
+     * @param userInfo
+     * @returns {Promise<unknown>}
+     */
+    register({ commit }, userInfo) {
+        const { username, password, email, role } = userInfo;
+        return new Promise((resolve, reject) => {
+            postRequest('/register', {
+                username: username.trim(),
+                password: password,
+                email: email,
+                role: role
+            }).then(resp=> {
+                resolve();
+            }).catch(error => {
+                reject(error);
+            });
+        })
+    },
 }
 
 export default {

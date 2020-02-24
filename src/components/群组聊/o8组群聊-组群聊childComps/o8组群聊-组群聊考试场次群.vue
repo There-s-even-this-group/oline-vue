@@ -1,13 +1,23 @@
 <template>
-    
+    <div><groupInfo/></div>
 </template>
 
 <script>
+    import groupInfo from "./common/groupinfo";
     export default {
-        name: "考试场次群"
+        components: {
+            groupInfo,
+        },
+        data() {
+            return {
+
+            };
+        },
+        methods: {
+
+        }
     }
 </script>
-
 <style scoped>
 
 </style>
