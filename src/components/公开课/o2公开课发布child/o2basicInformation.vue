@@ -115,7 +115,6 @@
             };
             return {
                 form: {
-                    public_classID:'',
                     public_className: '',
                     public_classType: '',
                     CreateDate:'',
@@ -152,12 +151,13 @@
         },
         computed: {
             getDate: function() {
-                let day = new Date()
+                let day = new Date();
                 return day.getFullYear() + '-' + day.getMonth() + '-' + day.getDay();
             },
         },
         created() {
-            this.form.public_classID = this.$store.state.public_classID;
+            this.form.CreateDate = this.getDate
+            console.log(this.form.CreateDate)
         },
         methods: {
             submitForm(formName) {
@@ -165,8 +165,8 @@
                 this.$refs[formName].validate((valid) => {
                     console.log(valid);
                     if (valid) {
-                        this.form.CreateDate = this.getDate;
-                        this.$emit('itemclick',this.form)
+
+                        this.$emit('item1click',this.form)
                         // this.postRequest('/addOpenClass',this.form).then( res =>{
                         //     console.log(res);
                         //     if(res.data.code == 1)

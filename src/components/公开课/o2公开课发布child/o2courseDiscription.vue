@@ -92,7 +92,6 @@
             return {
                 basepath:'/img/tfrRecieve',//上传UR
                 form: {
-                    public_classID:'',
                     MainSpeaker: '',//讲师
                     ClassGroup:'',//课程群
                     public_classPicture:'',
@@ -124,7 +123,6 @@
             }
         },
         created() {
-            this.form.public_classID = this.$store.state.public_classID;
         },
         computed: {
             getDate: function() {
@@ -154,16 +152,7 @@
                 console.log('--------------');
                 //下面才是真正
                 this.form.public_classPicture ='openClass/' + res;
-                this.postRequest('/updateOpenClassByClassID', this.form).then(res => {
-                    console.log(res);
-                    if(res.data == 1) {
-                        const h = this.$createElement;
-                        this.$notify({
-                            title: '提示信息',
-                            message: h('i', {style: 'color: teal'}, '您已成功创建公开课')
-                        });
-                    }
-                    })
+                this.$emit('item2click',this.form)
             },
             beforeAvatarUpload(file) {
                 console.log('上传之前');
