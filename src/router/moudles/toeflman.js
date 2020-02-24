@@ -2,7 +2,6 @@ import MainPage from '../../components/首页/index'
 
 const toeflmanRouter = {
     path: '/toeflman', //跟路由
-    name: 'toeflman',
     component: MainPage, //每一个模块的跟路由请保证务必是此界面！
     children: [
         {

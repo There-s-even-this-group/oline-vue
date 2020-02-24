@@ -36,7 +36,6 @@ export const constantRouterMap = [
   },
   {
     path: '/online',
-    name: 'Home',
     component: MainPage,
     children:[
       {
