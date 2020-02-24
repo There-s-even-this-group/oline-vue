@@ -43,7 +43,7 @@ export const constantRouterMap = [
         name: '111',
         component: () => import('../components/首页/pageContent/Home'),
         meta: {
-          tittle: '首页'
+          title: '首页'
         }
       },
       {
@@ -51,7 +51,7 @@ export const constantRouterMap = [
         name: 'login',
         component: () => import('../components/登录注册/o5登录页'),
         meta: {
-          tittle:'用户登录'
+          title:'用户登录'
         }
       },
       {
@@ -59,7 +59,7 @@ export const constantRouterMap = [
         name: 'register',
         component: () => import('../components/登录注册/o5注册页'),
         meta: {
-          tittle: '用户注册'
+          title: '用户注册'
         }
       }
     ]
