@@ -70,7 +70,6 @@
     methods: {
       getToeflmanHomeData(type) {
         this.postRequest('/tfrArticle/home',{articleType:type}).then(res =>{
-          console.log(res);
           this.tfrArticle[type].list.push(...res.data.list);
           this.loading=false
         }).catch(err =>{

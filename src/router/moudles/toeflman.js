@@ -19,16 +19,24 @@ const toeflmanRouter = {
             meta:{
                 title:'托福人分类页'
             },
-            children: [
-                {
-                    path:'details',  //即为  /toeflman/toelfsort/details
-                    name:'teolfsortdetails',
-                    component : () => import('components/托福人/o3托福人详情页.vue'),
-                    meta:{
-                        title:'托福人详情页'
-                    }
-                }
-            ]
+            // children: [
+            //     {
+            //         path:'/details',  //即为  /toeflman/toelfsort/details
+            //         name:'teolfsortdetails',
+            //         component : () => import('components/托福人/o3托福人详情页'),
+            //         meta:{
+            //             title:'托福人详情页'
+            //         }
+            //     }
+            // ]
+        },
+        {
+            path:'toelfsort/details',  //即为  /toeflman/toelfsort/details
+            name:'teolfsortdetails',
+            component : () => import('components/托福人/o3托福人详情页'),
+            meta:{
+                title:'托福人详情页'
+            }
         },
         {
             path:'toefmanpublic',

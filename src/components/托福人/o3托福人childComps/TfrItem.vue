@@ -57,7 +57,6 @@
             tfr_Sort_type: this.tfr_Sort_type
           }
         })
-        console.log(this.tfr_Sort_type);
       },
       toToelfDetails(index) {
         this.$router.push({

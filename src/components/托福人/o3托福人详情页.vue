@@ -1,5 +1,6 @@
 <template>
 <div>
+
   <tfr-detais>
     <template v-slot:contain>
       <div class="tfr_left">
@@ -35,7 +36,6 @@
 
 <script>
   import tfrDetais from "./o3托福人";
-  import asd from "./o3托福人分类页";
   import tfrPageList from "../common/tfrPageList";
 
   import tfr_ContentDetails from "../common/tfr_ContentDetails";
@@ -44,13 +44,13 @@
     export default {
       components:{
         tfrDetais,
-        asd,
         tfrPageList,
         tfr_ContentDetails,
         tfr_ContentDetailsPl,
         tfr_SideBar
       },
       created() {
+        console.log('爷进来了');
         this.article_id = this.$route.query.article_id;
         this.getToeflmanDetailData(this.article_id);
         this.getToelfmanDetailTitleImg();
