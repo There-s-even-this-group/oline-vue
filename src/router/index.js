@@ -32,7 +32,7 @@ Vue.use(VueRouter);
 export const constantRouterMap = [
   {
     path: '/',
-    redirect: '/online'
+    redirect: '/online',
   },
   {
     path: '/online',
@@ -42,12 +42,26 @@ export const constantRouterMap = [
       {
         path: '',
         name: '111',
-        component: () => import('../components/首页/pageContent/Home')
+        component: () => import('../components/首页/pageContent/Home'),
+        meta: {
+          tittle: '首页'
+        }
       },
       {
         path: 'login',
         name: 'login',
-        component: () => import('../components/登录注册/o5登录页')
+        component: () => import('../components/登录注册/o5登录页'),
+        meta: {
+          tittle:'用户登录'
+        }
+      },
+      {
+        path: 'register',
+        name: 'register',
+        component: () => import('../components/登录注册/o5注册页'),
+        meta: {
+          tittle: '用户注册'
+        }
       }
     ]
   },

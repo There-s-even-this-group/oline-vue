@@ -3,6 +3,6 @@
  * @type {string[]}
  */
 
-const whiteList = ['/online/login','/','/online','/toeflman'] // no redirect whitelist
+const whiteList = ['/online/login','/','/online','/toeflman','/online/register'] // no redirect whitelist
 
 export default whiteList
