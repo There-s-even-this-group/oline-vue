@@ -2,6 +2,8 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import MainPage from '../components/首页/index'
 import toeflmanRouter from "./moudles/toeflman";
+import openclassRouter from "./moudles/openclass";
+import groupchatRouter from "./moudles/groupchat";
 
 Vue.use(VueRouter);
 
@@ -64,74 +66,33 @@ export const constantRouterMap = [
       }
     ]
   },
+  {
+    path: '/404',
+    name: '404',
+    component: () => import('../components/404page/idnex'),
+    meta: {
+      title: '404'
+    }
+  }
 ];
 
 //异步挂载的路由
 //动态需要根据权限加载的路由表
 //登录后访问的
 export const asyncRouterMap = [
-
+  //避免写的过长而不易维护
   /**
-   * 避免写的过长而不易维护
+   * 托福人路由表
    */
   toeflmanRouter,
-
-  {
-    path:'/open_class',
-    name:'openclass',
-    component: () => import( 'components/公开课/o2main.vue'),
-    meta :{
-      title:'公开课'
-    }
-  },
-  {
-    path:'/courseDetails',
-    name:'courseDetails',
-    component: () => import( 'components/公开课/o2课程详细页.vue'),
-    meta :{
-      title:'课程详细页'
-    }
-  },
-  {
-    path:'/open_class/courseReview',
-    name:'courseReview',
-    component: () => import( 'components/公开课/o2往期回顾-课程回放页.vue'),
-    meta :{
-      title:'课程回放页'
-    }
-  },
-  {
-    path:'/open_class/publish_class',
-    name:'/open_class/publish_class',
-    component: () => import('components/公开课/o2公开课-发布.vue'),
-    meta :{
-      title: '公开课发布'
-    }
-  },
-  {
-    path:'/group_chat',
-    name:'groupChat',
-    component: () => import( 'components/群组聊/o8组群聊-组群聊.vue'),
-    meta :{
-      title:'群组聊'
-    }
-  },
-  {
-    path:'/group_detail',
-    name:'groupDetail',
-    component: () => import( 'components/群组聊/o8组群聊-组群详细页.vue'),
-    meta :{
-      title:'组群详细页'
-    }
-  },
-  {
-    path:'/group_chatRoom',
-    name:'groupChatRoom',
-    component: () => import( 'components/群组聊/o8组群聊-群聊页.vue'),
-    meta :{
-      title:'群聊页'
-    }
-  },
+  /**
+   * 公开课路由表
+   */
+  openclassRouter,
+  /**
+   * 群组聊路由表
+   */
+  groupchatRouter,
 
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
