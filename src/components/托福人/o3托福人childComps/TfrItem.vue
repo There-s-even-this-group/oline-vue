@@ -4,7 +4,7 @@
       <h3 :class="'tfr_item' + perform">{{tfr_sort}}</h3>
       <a href="#" @click="toToelfSort" class="viewAll">view all</a>
     </div>
-    <div class="tfr_itemList">
+    <div class="tfr_itemList" v-loading="loading">
       <ul v-for="(value,index) in articlelist">
         <li><a href="#" @click="toToelfDetails(index)">{{value.article_title}}</a></li>
       </ul>
@@ -45,6 +45,12 @@
           return 'Reading'
         }
       },
+      loading:{
+        type:Boolean,
+        default() {
+          return true;
+        }
+      }
     },
     created() {
 
@@ -86,8 +92,8 @@
   .tfr_itemSpeaking{color:#df2b23;background:url(~assets/img/托福人/tfr_itemSpeaking.png) 0 center no-repeat;text-align: end}
   .tfr_itemReading{color:#1ab592;background:url(~assets/img/托福人/tfr_itemReading.png) 0 center no-repeat;text-align: end}
   .tfr_itemWriting{color:#7569ca;background:url(~assets/img/托福人/tfr_itemWriting.png) 0 center no-repeat;text-align: end}
-  .tfr_itemVocabulary{background:url(~assets/img/托福人/tfr_itemVocabulary.png) 0 center no-repeat;text-align: end}
-  .tfr_itemInformation{background:url(~assets/img/托福人/tfr_itemInformation.png) 0 center no-repeat;text-align: end}
-  .tfr_itemActivities{background:url(~assets/img/托福人/tfr_itemActivities.png) 0 center no-repeat;text-align: end}
-  .tfr_itemPrediction{background:url(~assets/img/托福人/tfr_itemPrediction.png) 0 center no-repeat;text-align: end}
+  .tfr_itemVocabulary{color:#2F4F4F;background:url(~assets/img/托福人/tfr_itemVocabulary.png) 0 center no-repeat;text-align: end}
+  .tfr_itemInformation{color:#228B22;background:url(~assets/img/托福人/tfr_itemInformation.png) 0 center no-repeat;text-align: end}
+  .tfr_itemActivities{color:#B22222;background:url(~assets/img/托福人/tfr_itemActivities.png) 0 center no-repeat;text-align: end}
+  .tfr_itemPrediction{color:#8B4513;background:url(~assets/img/托福人/tfr_itemPrediction.png) 0 center no-repeat;text-align: end}
 </style>

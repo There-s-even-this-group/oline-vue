@@ -6,44 +6,75 @@
         <span class="glyphicon glyphicon-heart" title="点击后关注"  style="float: right;right: 50px;font-size: 30px;color: red;"  ></span>
       </div>
       <div class="tfr_DetailsSr">
-        <textarea name="" cols="" rows="" class="tfr_DetailsInput"></textarea>
+        <textarea name="notedata" cols="" rows="10" class="tfr_DetailsInput" v-model="notedata"></textarea>
       </div>
       <div  class="tfr_DetailsTj">
         <dl>
           <dt><a class="tfr_DetailsTjLink">登录</a>后参与评论</dt>
-          <dd><a href="###" class="tfr_DetailsTjpl">提交评论</a></dd>
+          <dd><button class="tfr_DetailsTjpl" v-if="isLog" @click="addPL">提交评论</button></dd>
         </dl>
       </div>
       <div class="tfr_DetailsMessage">
-        <ul v-for="(item,index) in plcontent.plText">
-          <li>
+        <ul v-for="(item,index) in plcontent.list.slice((plcontent.page-1)*5)" v-if=" index<5">
+          <li :key="item.id">
             <div class="tfr_DetailsMPic">
               <img src="~assets/img/托福人/125x125.jpg">
               <div class="tfr_DetailsMPicB"></div>
             </div>
             <div class="tfr_DetailsMText">
-              <div class="tfr_DetailsMTitle">{{item}}</div>
-              <div class="tfr_DetailsName"><span>{{plcontent.username[index]}}</span>{{plcontent.date[index]}}
+              <div class="tfr_DetailsMTitle">{{item.commentContent}}</div>
+              <div class="tfr_DetailsName"><span>{{item.username}} &nbsp;</span>{{item.commentDate}}
               </div>
             </div>
-            <div class="tfr_DetailsLc">#16</div>
+            <div class="tfr_DetailsLc"># {{ index + 1}}</div>
           </li>
         </ul>
       </div>
     </slot>
+
   </div>
 </template>
 
 <script>
   export default {
     name: "tfr_ContentDetailsPl",
+    inject:['reload'],
+    created() {
+      this.getCommentByArticle(1);
+    },
+    props: {
+      article_id:{
+        type: String,
+        default(){
+          return 1;
+        }
+      },
+    },
     data() {
       return {
-        plcontent: {
-          plText:['品论内容评论内容','我这是一条评论','我这又是一条评论'],
-          username:['会员123','会员234','会员345'],
-          date:['一个月前（12-03）','一个月前（12-04）','一个月前（12-05）']
-        }
+        isLog:true,
+        notedata:'',
+        plcontent: {page:0,list:[]},
+      }
+    },
+    methods: {
+      abc(){
+        console.log('我在调用字方法');
+      },
+      addPL() {
+        this.$emit('itemclick',this.notedata)
+        this.reload();
+      },
+      getCommentByArticle(page){
+        this.plcontent.page = page;
+        console.log(this.plcontent.page);
+        //一页显示5个
+        const PLCount = page * 5;
+        this.getRequest('/getCommentByArticle/'+this.article_id + '/' + PLCount).then(res =>{
+          console.log(res);
+          this.plcontent.list = res.data.list;
+
+        })
       }
     }
   }
@@ -68,7 +99,7 @@
   .tfr_DetailsTj dd{
     flex: 1;
     width:200px;}
-  a.tfr_DetailsTjpl{
+  button.tfr_DetailsTjpl{
     width:100px; height:40px; text-align:center; display:block;
     color:#fff; line-height:40px; background:#68BF4A; border-radius:5px;}
 
@@ -88,8 +119,8 @@
     width:750px; display: block;
   text-align: left;
   }
-  .tfr_DetailsMTitle{font-size:14px; line-height:18px; color:#666; padding-left:45px;}
-  .tfr_DetailsName{font-size:12px; line-height:18px; color:#666;padding-left:45px;}
+  .tfr_DetailsMTitle{font-size:18px; line-height:18px; color:#666; padding-left:45px;}
+  .tfr_DetailsName{font-size:18px; line-height:18px; color:#666;padding-left:45px;}
   .tfr_DetailsName span{color:#06F;}
 
   .tfr_DetailsLc{width:60px; text-align:center; line-height:36px; color:#777; float:right;}

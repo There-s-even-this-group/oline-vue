@@ -2,7 +2,7 @@
     <div class="tfr_left">
       <div v-for="(item,index) in tfr_sorts" class="tfr_itemLeft" :key="item.id">
          <TfrItem :articlelist="tfrArticle[perform[index]].list" :tfr_sort="tfr_sorts[index]"
-                  :tfr_Sort_type="perform[index]" :perform="perform[index]" v-loading="loading"></TfrItem>
+                  :tfr_Sort_type="perform[index]" :perform="perform[index]" :loading="loading"></TfrItem>
       </div>
     </div>
 </template>
@@ -54,8 +54,8 @@
         }
       },
     },
-    created() {
-        this.loading=true
+   mounted() {
+      this.loading=true
       this.getToeflmanHomeData('Listening')
       this.getToeflmanHomeData('Speaking')
       this.getToeflmanHomeData('Reading')
@@ -64,8 +64,6 @@
       this.getToeflmanHomeData('Information')
       this.getToeflmanHomeData('Activities')
       this.getToeflmanHomeData('Prediction')
-    },
-    mounted: function () {
     },
     methods: {
       getToeflmanHomeData(type) {

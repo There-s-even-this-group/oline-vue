@@ -43,9 +43,7 @@
               },
             }
         },
-        mounted: function () {
-        },
-      created() {
+    mounted() {
         this.loading = true;
         this.tfr_Sort_type = this.$route.query.tfr_Sort_type;
         this.getToeflmanSortData(this.tfr_Sort_type)
@@ -84,7 +82,7 @@
   .tfr_classifyh3 div {
     margin-left: 15px;
     +width: 18%;height: 50px;}
-  .tfr_classifyh3 .imgA{display:block;width: 100px;text-decoration: none;color: inherit;font-size: 14px;color: #999999;}
+  .tfr_classifyh3 .imgA{display:block;width: 200px;text-decoration: none;color: inherit;font-size: 14px;color: #999999;}
   .tfr_classifyh3 .img{width: 30px;height: 30px;margin-left: -15px}
 
   .tfr_classifyText{

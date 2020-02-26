@@ -1,34 +1,27 @@
 <template>
 <div>
-
   <tfr-detais>
-    <template v-slot:contain>
-      <div class="tfr_left">
+      <div class="tfr_left" slot="contain">
         <div class="tfr_Details">
-          <div class="tfr_DetailsPic"><img :src="imgURL"></div>
+          <div class="tfr_DetailsPic"><img :src="'/images/' + Article[0].article_picture"></div>
           <div class="tfr_DetailsTitle">{{Article[0].article_title}}</div>
           <div class="tfr_DetailsTime">发布于：<span>22：00</span><span>{{Article[0].article_date}}</span></div>
           <div class="tfr_DetailsTime">发布人：<a href="###">{{Article[0].article_author}}</a></div>
           <div class="tfr_DetailsFx"><a><img src="~assets/img/托福人/tfr_DetailsFx.png"></a></div>
           <div class=" tfr_DetailsMain">
-            <tfr_ContentDetails></tfr_ContentDetails>
+            <tfr_ContentDetails :article_content="Article[0].article_content"></tfr_ContentDetails>
           </div>
-          <div class="tfr_DetailsPl">
-            <tfr_ContentDetailsPl></tfr_ContentDetailsPl>
+          <div class="tfr_DetailsPl" >
+            <tfr_ContentDetailsPl v-if="isRouterAlive" @itemclick="addComment" :article_id="this.article_id"  ref="c1"></tfr_ContentDetailsPl>
           </div>
         </div>
+        <tfrPageList @NumChange="Numchange"></tfrPageList>
       </div>
-      <div class="tfr_left">
-        <tfrPageList></tfrPageList>
-      </div>
-    </template>
-    <template v-slot:sideBar>
     <tfr_-side-bar slot="sideBar" Rtitle="名师推荐" :titles="teacherName"  :imgURLs="imgs">
       <div slot="dd-main-info" class="dd-main-info">
         <span><a href="###">60分以下考生作业: 盛会杰老师 于2015-01-15日发作业</a></span>
       </div>
     </tfr_-side-bar>
-    </template>
   </tfr-detais>
 
 </div>
@@ -49,25 +42,52 @@
         tfr_ContentDetailsPl,
         tfr_SideBar
       },
+      provide(){
+        return{
+          reload:this.reload
+        }
+      },
+      computed: {
+        getDate: function() {
+          let day = new Date();
+          return day.getFullYear() + '-' + day.getMonth() + '-' + day.getDay();
+        },
+      },
       created() {
-        console.log('爷进来了');
         this.article_id = this.$route.query.article_id;
         this.getToeflmanDetailData(this.article_id);
-        this.getToelfmanDetailTitleImg();
       },
         data() {
             return {
-              article_id:'',
-              imgURL:'',
+              isRouterAlive:true,
+              article_id: '',
               imgs:[require("assets/img/托福人/tfr_mstj.png"),require("assets/img/托福人/tfr_mstj.png"),
                 require("assets/img/托福人/tfr_mstj.png")],
               teacherName:["教师名字","教师名字","教师名字"],
-              Article: [],
+              Article:[],
+              commentUser: {
+                username:'',
+                articleID:'',
+                commentDate:'',
+                commentContent:''
+              },
             }
         },
         mounted: function () {
         },
         methods: {
+          reload (){
+            this.isRouterAlive = false
+            this.$nextTick(function(){
+              this.isRouterAlive = true
+            })
+          },
+          Numchange(page){
+            this.isRouterAlive = false;
+            console.log(page);
+            this.$refs.c1.getCommentByArticle(page);
+            this.isRouterAlive = true
+          },
           getToeflmanDetailData(id) {
             this.postRequest('/tfrArticle/ArticleDetail',{id:id}).then(res =>{
               console.log(res);
@@ -76,12 +96,22 @@
               console.log(err);
             })
           },
-          getToelfmanDetailTitleImg() {
-            this.getRequest('/img/tfrGive').then( res => {
-              console.log(res.data);
-              this.imgURL = '/images/'+ res.data;
+          // getToelfmanDetailTitleImg(id) {
+          //   this.getRequest('/img/imgGive',{id:id}).then( res => {
+          //     console.log(res.data);
+          //     this.imgURL = '/images/'+ res.data;
+          //   })
+          // }
+          addComment(notedata){
+            this.commentUser.articleID = this.article_id;
+            this.commentUser.username = 'wuyue';
+            this.commentUser.commentDate = this.getDate;
+            this.commentUser.commentContent = notedata;
+            this.postRequest('/addComment',this.commentUser).then(res => {
+              console.log(res);
             })
-          }
+          },
+
         }
     }
 </script>
