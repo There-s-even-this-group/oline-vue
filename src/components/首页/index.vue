@@ -19,6 +19,7 @@
     import navigationBar from "./indexChildComp/navigationBar";
     import footercomp from "./indexChildComp/footercomp";
     import haddercomp from "./indexChildComp/haddercomp";
+    import {getRequest} from "../../utils/api";
 
     export default {
         components :{
@@ -31,7 +32,14 @@
         },
         mounted: function () {
         },
-        methods: {}
+        methods: {},
+        watch:{
+            $route(to, from) {
+                if (to.path == '/online/'){
+                    this.$route.go(0);
+                }
+            }
+        }
     }
 </script>
 

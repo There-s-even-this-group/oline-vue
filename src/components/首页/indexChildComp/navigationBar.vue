@@ -81,18 +81,15 @@
         },
         watch:{
             $route(to, from) {
-                console.log(to.path)
                 if (to.path == '/online/'){
                     getRequest('/getInf').then(response => {
                         var data = response.data;
                         this.role = data.role;
-                        console.log(this.role);
                         if (this.role[0] == 'admin'){
                             this.adminIf = true;
                         } else {
                             this.adminIf = false
                         }
-                        console.log(this.adminIf)
                     });
                 }
             }

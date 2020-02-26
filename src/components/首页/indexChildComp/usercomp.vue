@@ -38,10 +38,11 @@
         },
         watch:{
             $route(to, from) {
-                if (to.path == '/online'){
+                if (to.path == '/online/'){
                     getRequest('/getInf').then(response => {
                        var data = response.data;
                        this.username = data.username;
+                        this.login = true;
                     });
                 }
             }
