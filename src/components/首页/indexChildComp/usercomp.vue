@@ -11,6 +11,7 @@
 
 <script>
     import {getToken} from "../../../utils/auth";
+    import {getRequest} from "../../../utils/api";
     export default {
         data() {
             return {
@@ -32,6 +33,16 @@
                     this.username = this.$store.getters.username;
                 } else {
                     this.login = false
+                }
+            }
+        },
+        watch:{
+            $route(to, from) {
+                if (to.path == '/online'){
+                    getRequest('/getInf').then(response => {
+                       var data = response.data;
+                       this.username = data.username;
+                    });
                 }
             }
         }

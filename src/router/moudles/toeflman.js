@@ -5,14 +5,6 @@ const toeflmanRouter = {
     component: MainPage, //每一个模块的跟路由请保证务必是此界面！
     children: [
         {
-            path: '',
-            name: 'toeflman',  //子路由，表现形式即为 /toeflman下<router-view>中的所显示的页面
-            component : () => import('components/托福人/o3托福人.vue'),
-            meta:{
-                title:'托福人首页'
-            }
-        },
-        {
             path:'toelfsort',  //子路由，表现形式即为 /toeflman/toelfsort 以后的嵌套路由以此类推，此处务必使用套娃，否则bug飞上天
             name:'teolfsort',
             component : () => import('components/托福人/o3托福人分类页.vue'),

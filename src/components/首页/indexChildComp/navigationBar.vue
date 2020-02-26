@@ -1,80 +1,102 @@
 <template>
     <el-menu :default-active="this.$route.path" router mode="horizontal">
-        <el-menu-item v-for="(item) in navList" :key="id" :index="item.name">
+        <el-menu-item v-for="(item) in navList" :index="item.name">
             {{ item.navItem }}
         </el-menu-item>
 
-        <el-submenu v-for="child in navList" :index="child.name" :key="child.id" v-if="child.childNode1" >
-            <template slot="title">用户管理</template>
-            <el-menu-item v-for="child2 in child.childNode1" :index="child2.name" :key="child2.pid" >
-                {{child2.navItem}}
-            </el-menu-item>
-        </el-submenu>
-        <el-submenu v-for="child in navList" :index="child.name" :key="child.id" v-if="child.childNode2" >
-            <template slot="title">系统管理</template>
-            <el-menu-item v-for="child2 in child.childNode2" :index="child2.name" :key="child2.pid" >
-                {{child2.navItem}}
-            </el-menu-item>
-        </el-submenu>
+        <template v-if="adminIf">
+            <el-submenu v-for="child in adminList" :index="child.name">
+                <template slot="title">{{child.name}}</template>
+                <el-menu-item v-for="child2 in child.childNode" :index="child2.name" >
+                    {{child2.navItem}}
+                </el-menu-item>
+            </el-submenu>
+        </template>
 
     </el-menu>
 </template>
 
 <script>
+    import {getRequest} from "../../../utils/api";
+
     export default {
         data() {
             return {
+                role : [],
                 navList:[
-                    {name:'/',navItem:'首页',id:'1'},
-                    {name:'/toeflman',navItem:'托福人',id:'2'},
-                    {name:'/toeflman/toefmanpublic',navItem:'托福人发布页',id:'3'},
-                    {name:'/open_class',navItem:'公开课',id:'4'},
-                    {name:'/group_chat',navItem:'群组聊',id:'5'},
-
-                    //增加用户管理下拉框
+                    {name:'/',navItem:'首页'},
+                    {name:'/online/toeflman',navItem:'托福人'},
+                    {name:'/online/open_class',navItem:'公开课'},
+                    {name:'/online/group_chat',navItem:'群组聊'},
+                    {name:'/toeflman/toefmanpublic',navItem:'福利城堡'}
+                ],
+                adminList:[
                     {
-                        name:'',
+                        name:'用户管理',
                         navItem:'',
-                        id:'6',
-                        childNode1:[
+                        childNode:[
                             {
                                 name:'/system_admin',
-                                navItem:'用户管理',
-                                pid:'61'
+                                navItem:'用户管理'
                             },
                             {
-                                name:'/teacher',
-                                navItem:'讲师管理',
-                                pid:'62'
+                                name:'/system_admin/teacher',
+                                navItem:'讲师管理'
                             }
 
                         ]
                     },
                     {
-                        name:'',
+                        name:'系统管理',
                         navItem:'',
-                        id:'7',
-                        childNode2:[
+                        childNode:[
                             {
-                                name:'/Curriculum_activities',
-                                navItem:'课程活动',
-                                pid:'71'
+                                name:'/system_admin/Curriculum_activities',
+                                navItem:'课程活动'
                             },
                             {
-                                name:'/website_link',
-                                navItem:'网站链接',
-                                pid:'72'
+                                name:'/system_admin/website_link',
+                                navItem:'网站链接'
                             }
 
                         ]
                     },
-
-                ]
+                ],
+                adminIf: false
             }
         },
         mounted: function () {
+            this.init();
         },
-        methods: {}
+        methods: {
+            init(){
+                getRequest('/getInf').then(response => {
+                    var data = response.data;
+                    this.role = data.role;
+                    if (this.role[0] == 'admin'){
+                        this.adminIf = true;
+                    }
+                });
+            }
+        },
+        watch:{
+            $route(to, from) {
+                console.log(to.path)
+                if (to.path == '/online/'){
+                    getRequest('/getInf').then(response => {
+                        var data = response.data;
+                        this.role = data.role;
+                        console.log(this.role);
+                        if (this.role[0] == 'admin'){
+                            this.adminIf = true;
+                        } else {
+                            this.adminIf = false
+                        }
+                        console.log(this.adminIf)
+                    });
+                }
+            }
+        }
     }
 </script>
 

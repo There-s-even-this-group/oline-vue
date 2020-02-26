@@ -20,7 +20,7 @@ router.beforeEach(async(to, from, next) => {
   const hasToken = getToken();
   document.title = to.meta.title;
   if (hasToken) {
-    if (to.path === '/login') {
+    if (to.path === '/online/login') {
       next({path : '/'})
     } else {
       const hasRoles = store.getters.roles && store.getters.roles.length > 0;
@@ -43,7 +43,7 @@ router.beforeEach(async(to, from, next) => {
         } catch (error) {
           await store.dispatch('user/resetToken');
           Message.error(error || 'Has Error');
-          next('/login')
+          next('/online/login')
         }
       }
     }
@@ -55,7 +55,7 @@ router.beforeEach(async(to, from, next) => {
       next()
     } else {
       // other pages that do not have permission to access are redirected to the login page.
-      next('/online/about')
+      next('/online/login')
     }
   }
 });

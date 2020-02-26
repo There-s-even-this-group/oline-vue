@@ -3,6 +3,7 @@ import {getToken,setToken,removeToken} from "@/utils/auth";
 import router,{reserRouter} from "@/router";
 import ro from "element-ui/src/locale/lang/ro";
 import da from "element-ui/src/locale/lang/da";
+import {resetRouter} from "../../router";
 
 const state = {
     token: getToken(),
@@ -36,7 +37,6 @@ const actions = {
                 password: password
             }).then(resp=> {
                 var data= resp.data;
-                console.log(data.token);
                 commit('SET_TOKEN', data.token);
                 setToken(data.token);
                 resolve();

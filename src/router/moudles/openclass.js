@@ -5,14 +5,6 @@ const openclassRouter = {
     component: MainPage,
     children: [
         {
-            path: '',
-            name: 'open_class',
-            component: () => import('components/公开课/o2main.vue'),
-            meta :{
-                title:'公开课'
-            }
-        },
-        {
             path:'courseDetails',
             name:'courseDetails',
             component: () => import( 'components/公开课/o2课程详细页.vue'),

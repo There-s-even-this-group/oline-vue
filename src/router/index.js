@@ -43,10 +43,34 @@ export const constantRouterMap = [
     children:[
       {
         path: '',
-        name: '111',
+        name: '首页',
         component: () => import('../components/首页/pageContent/Home'),
         meta: {
           title: '首页'
+        }
+      },
+      {
+        path:'group_chat',
+        name:'groupChat',
+        component: () => import( 'components/群组聊/o8组群聊-组群聊.vue'),
+        meta :{
+          title:'群组聊'
+        }
+      },
+      {
+        path: 'open_class',
+        name: 'open_class',
+        component: () => import('components/公开课/o2main.vue'),
+        meta :{
+          title:'公开课'
+        }
+      },
+      {
+        path: 'toeflman',
+        name: 'toeflman',
+        component : () => import('components/托福人/o3托福人.vue'),
+        meta:{
+          title:'托福人首页'
         }
       },
       {

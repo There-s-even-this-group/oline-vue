@@ -5,14 +5,6 @@ const groupchatRouter = {
     component: MainPage,
     children: [
         {
-            path:'',
-            name:'groupChat',
-            component: () => import( 'components/群组聊/o8组群聊-组群聊.vue'),
-            meta :{
-                title:'群组聊'
-            }
-        },
-        {
             path:'group_detail',
             name:'groupDetail',
             component: () => import( 'components/群组聊/o8组群聊-组群详细页.vue'),
