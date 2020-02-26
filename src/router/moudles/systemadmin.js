@@ -39,3 +39,5 @@ const systemadminRouter={
 
   ]
 }
+
+export default systemadminRouter;
