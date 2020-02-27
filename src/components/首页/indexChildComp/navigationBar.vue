@@ -73,7 +73,7 @@
                 getRequest('/getInf').then(response => {
                     var data = response.data;
                     this.role = data.role;
-                    if (this.role[0] == 'admin'){
+                    if (this.role.includes('admin')){
                         this.adminIf = true;
                     }
                 });
@@ -85,7 +85,7 @@
                     getRequest('/getInf').then(response => {
                         var data = response.data;
                         this.role = data.role;
-                        if (this.role[0] == 'admin'){
+                        if (this.role.includes('admin')){
                             this.adminIf = true;
                         } else {
                             this.adminIf = false

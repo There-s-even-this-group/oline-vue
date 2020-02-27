@@ -143,7 +143,7 @@ const actions = {
                 email: email,
                 role: role
             }).then(resp=> {
-                resolve();
+                resolve(resp.data);
             }).catch(error => {
                 reject(error);
             });

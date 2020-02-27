@@ -111,7 +111,15 @@
                     if (valid) {
                         this.loading = true;
                         this.$store.dispatch('user/register', this.registerFrom)
-                            .then(() => {
+                            .then((data) => {
+                                if (data.code === 1000){
+                                    this.$message({
+                                        message: data.message,
+                                        type: 'error'
+                                    });
+                                    this.loading = false
+                                    return
+                                }
                                 this.$message({
                                     message: '注册成功',
                                     type: 'success'
