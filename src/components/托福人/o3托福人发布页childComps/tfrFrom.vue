@@ -56,7 +56,7 @@
     data() {
       return {
         ad_url: '',//上传后的图片或视频URL
-        basepath:'/img/tfrRecieve',//上传UR
+        basepath:'/upload/tfrRecieve',//上传UR
         imageUrl:'',
         formLabelAlign: {
           article_title: '',
