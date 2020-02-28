@@ -11,7 +11,7 @@
       <div  class="tfr_DetailsTj">
         <dl>
           <dt><a class="tfr_DetailsTjLink">登录</a>后参与评论</dt>
-          <dd><button class="tfr_DetailsTjpl" v-if="isLog" @click="addPL">提交评论</button></dd>
+          <dd><button class="tfr_DetailsTjpl" v-if="AreYouOK()" @click="addPL">提交评论</button></dd>
         </dl>
       </div>
       <div class="tfr_DetailsMessage">
@@ -36,12 +36,16 @@
 </template>
 
 <script>
+  import {getToken} from "../../utils/auth";
+
   export default {
+
     name: "tfr_ContentDetailsPl",
     inject:['reload'],
     created() {
       this.getCommentByArticle(1);
     },
+
     props: {
       article_id:{
         type: String,
@@ -52,7 +56,6 @@
     },
     data() {
       return {
-        isLog:true,
         notedata:'',
         plcontent: {page:0,list:[]},
       }
@@ -75,6 +78,15 @@
           this.plcontent.list = res.data.list;
 
         })
+
+      },
+      AreYouOK(){
+        if(getToken())
+        {
+          return true;
+        }
+        else
+          return false;
       }
     }
   }
