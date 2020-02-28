@@ -67,7 +67,6 @@ const actions = {
         return new Promise((resolve, reject) => {
             getRequest('/getInf').then(response => {
                 const { data } = response;
-                console.log(data);
 
                 if (!data) {
                     reject('Verification failed, please Login again.')
@@ -75,13 +74,6 @@ const actions = {
 
                 const { role, username, email, sex, phone, birthdata, sign } = data;
 
-                console.log(role);
-                console.log(username);
-                console.log(email);
-                console.log(sex);
-                console.log(phone);
-                console.log(birthdata);
-                console.log(sign);
                 // roles must be a non-empty array
                 if (!role || role.length <= 0) {
                     reject('getInfo: roles must be a non-null array!')
