@@ -5,6 +5,7 @@ import toeflmanRouter from "./moudles/toeflman";
 import groupchatRouter from "./moudles/groupchat";
 import openclassRouter from "./moudles/openclass";
 import systemadminRouter from "./moudles/systemadmin";
+import personalcenterRouter from "./moudles/personalcenter";
 
 Vue.use(VueRouter);
 
@@ -114,6 +115,10 @@ export const asyncRouterMap = [
    * 管理路由表
    */
   systemadminRouter,
+  /**
+   * 个人中心路由
+   */
+  personalcenterRouter,
 
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }

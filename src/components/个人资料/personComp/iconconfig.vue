@@ -1,16 +1,9 @@
 <template>
-    <div>
-        <secondmenu/>
-        <router-view/>
-    </div>
+    <h1>头像修改</h1>
 </template>
 
 <script>
-    import secondmenu from "./personComp/secondmenu";
     export default {
-        components: {
-            secondmenu
-        },
         data() {
             return {}
         },

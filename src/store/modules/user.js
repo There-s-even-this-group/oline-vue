@@ -9,7 +9,11 @@ const state = {
     token: getToken(),
     name: '',
     email: '',
-    role: []
+    role: [],
+    sex: '',
+    phone: '',
+    birthdata: '',
+    sign: ''
 }
 
 const mutations = {
@@ -24,6 +28,18 @@ const mutations = {
     },
     SET_ROLES: (state, role) => {
         state.role = role
+    },
+    SET_SEX: (state, sex) => {
+        state.sex = sex
+    },
+    SET_PHONE: (state, phone) =>  {
+        state.phone = phone
+    },
+    SET_BIRTHDATA: (state, birthdata) => {
+        state.birthdata = birthdata
+    },
+    SET_SIGN: (state, sign) => {
+        state.sign = sign
     }
 }
 
@@ -51,13 +67,21 @@ const actions = {
         return new Promise((resolve, reject) => {
             getRequest('/getInf').then(response => {
                 const { data } = response;
+                console.log(data);
 
                 if (!data) {
                     reject('Verification failed, please Login again.')
                 }
 
-                const { role, username, email } = data;
+                const { role, username, email, sex, phone, birthdata, sign } = data;
 
+                console.log(role);
+                console.log(username);
+                console.log(email);
+                console.log(sex);
+                console.log(phone);
+                console.log(birthdata);
+                console.log(sign);
                 // roles must be a non-empty array
                 if (!role || role.length <= 0) {
                     reject('getInfo: roles must be a non-null array!')
@@ -66,6 +90,10 @@ const actions = {
                 commit('SET_ROLES', role);
                 commit('SET_NAME', username);
                 commit('SET_EMAIL', email);
+                commit('SET_SEX', sex);
+                commit('SET_PHONE', phone);
+                commit('SET_BIRTHDATA', birthdata);
+                commit('SET_SIGN', sign);
                 resolve(data)
             }).catch(error => {
                 reject(error)

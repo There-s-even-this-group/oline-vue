@@ -1,11 +1,14 @@
 <template>
     <div v-if="this.login">
-        {{username}}
-        <span>
+        <span @click="this.personal">
+            {{username}}
+        </span>
+        <span style="margin-left: 10px">
         <el-badge :value="infoNumber" class="item">
             <i class="el-icon-bell"></i>
         </el-badge>
         </span>
+        <el-button style="margin-left: 30px" size="mini" icon="el-icon-user" circle @click="this.personal"></el-button>
     </div>
 </template>
 
@@ -34,6 +37,9 @@
                 } else {
                     this.login = false
                 }
+            },
+            personal: function () {
+                this.$router.push('/person/personal_data/base')
             }
         },
         watch:{
