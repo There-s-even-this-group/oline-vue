@@ -2,7 +2,7 @@
     <div class="doc1180 fn-clear paddingT20">
         <div class="doc230 fn-left">
             <div class="flcb_cardUser">
-                <div class="flcb_cardUserPic"><a href="###"><img src="../../../assets/img/个人中心/flcb_cardUserPic.png" width="100" height="100"></a></div>
+                <div class="flcb_cardUserPic"><a href="###"><img :src="iconPath" width="100" height="100"></a></div>
                 <div class="flcb_cardUserName"><a href="###">会员名字</a></div>
                 <div class="flcb_cardUserText"><a href="###">文字文字请限制字数</a></div>
             </div>
@@ -36,11 +36,26 @@
                     {name:'/person/personal_castle',navItem:'我的福利城堡',icon: 'el-icon-present'},
                     {name:'/person/personal_toeflman',navItem:'我的托福人',icon: 'el-icon-user'}
                 ],
+                iconPath: ''
             }
         },
         mounted: function () {
+            this.getUserIcon()
         },
-        methods: {}
+        methods: {
+            getUserIcon(){
+                this.getRequest('/getIcon').then((resp) => {
+                    this.iconPath = resp.data.icon;
+                })
+            }
+        },
+        watch:{
+            $route(to, from) {
+                if (from.path === '/person/personal_data/icon') {
+                    this.getUserIcon()
+                }
+            }
+        }
     }
 </script>
 
@@ -49,8 +64,8 @@
     .paddingT20{padding-top:20px;}
     .doc230{width:230px;}
     .flcb_cardUser{width:230px; height:192px; background:url(../../../assets/img/个人中心/flcb_cardUser.jpg) 0 0 no-repeat; padding-top:25px;}
-    .flcb_cardUserPic{width:103px; height:103px; padding:3px 0 0 3px; background:#fff;margin:0 auto;}
-    .flcb_cardUserPic img{width:100px; height:100px; }
+    .flcb_cardUserPic{width:100px; height:100px; background:#fff;margin:0 auto;}
+    .flcb_cardUserPic img{width:100px; height:100px;}
     .flcb_cardUserName{color:#fff; text-align:center; padding:0 20px; line-height:30px; padding-top:8px; height:30px; overflow:hidden;}
     .flcb_cardUserText{color:#fff; font-size:12px; line-height:30px; height:30px; overflow:hidden; text-align:center;}
     .flcb_cardUserName a,

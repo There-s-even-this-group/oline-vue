@@ -58,3 +58,13 @@ export const getRequest = (url) => {
     url: `${base}${url}`
   });
 };
+export const uploadFileRequest = (url, params) => {
+  return axios({
+    method: 'post',
+    url: `${base}${url}`,
+    data: params,
+    headers: {
+      'Content-Type': 'multipart/form-data'
+    }
+  });
+};

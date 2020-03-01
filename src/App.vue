@@ -5,7 +5,7 @@
 <style lang="less">
   @import "assets/css/base.css";
   @import "assets/css/normalize.css";
-  @import "assets/css/bootstrap.min.css";
+  /*@import "assets/css/bootstrap.min.css";*/
   @import "assets/css/toefl.css";
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;

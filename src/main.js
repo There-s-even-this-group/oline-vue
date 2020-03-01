@@ -5,6 +5,7 @@ import store from './store'
 import Element from 'element-ui'
 import {getRequest} from './utils/api'
 import {postRequest} from './utils/api'
+import {uploadFileRequest} from './utils/api'
 import {getToken} from "@/utils/auth";
 import 'element-ui/lib/theme-chalk/index.css'
 import {Message} from 'element-ui'
@@ -13,6 +14,7 @@ import whiteList from './router/moudles/whiteList'
 Vue.use(Element)
 Vue.prototype.getRequest = getRequest;
 Vue.prototype.postRequest = postRequest;
+Vue.prototype.uploadFileRequest = uploadFileRequest;
 
 Vue.config.productionTip = false
 
