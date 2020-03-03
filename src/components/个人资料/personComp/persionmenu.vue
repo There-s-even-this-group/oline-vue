@@ -3,8 +3,8 @@
         <div class="doc230 fn-left">
             <div class="flcb_cardUser">
                 <div class="flcb_cardUserPic"><a href="###"><img :src="iconPath" width="100" height="100"></a></div>
-                <div class="flcb_cardUserName"><a href="###">会员名字</a></div>
-                <div class="flcb_cardUserText"><a href="###">文字文字请限制字数</a></div>
+                <div class="flcb_cardUserName"><a href="###">{{username}}</a></div>
+                <div class="flcb_cardUserText"><a href="###">{{username}}</a></div>
             </div>
             <div class="flcb_cardUserInfo">
                 <div>你现在拥有的RPB：<span class="green">50</span></div>
@@ -29,6 +29,7 @@
     export default {
         data() {
             return {
+                username: '',
                 navList:[
                     {name:'/person/personal_data/base',navItem:'个人资料',icon:'el-icon-setting'},
                     {name:'/person/personal_class',navItem:'我的公开课',icon: 'el-icon-reading'},
@@ -47,6 +48,7 @@
                 this.getRequest('/getIcon').then((resp) => {
                     this.iconPath = resp.data.icon;
                 })
+                this.username = this.$store.getters.username;
             }
         },
         watch:{
