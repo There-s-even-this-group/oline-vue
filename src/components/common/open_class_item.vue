@@ -1,22 +1,22 @@
 <template>
     <div class="open-class-item">
         <div class="openClassDate">
-            <span class="openClassD">29日</span><span class="openClassM">12月</span>
+            <span class="openClassD">{{getday}}日</span><span class="openClassM">{{getmonth}}月</span>
         </div>
         <div>
             <dl >
             <dt>
                 <div class="openClassTec"><a href="#"><img src="~assets/img/托福人/125x125.jpg" width="125" height="125"></a></div>
-                <div class="openClassName">主讲人：老师</div>
+                <div class="openClassName">主讲人：{{openClass.mainSpeaker}}</div>
                 <a class="openClassZan" href="###">32</a>
-                <div class="openClassJieshao">底胤：托福口语主讲，大学期间便在各大培训机构中授课，对托福口语及美语发音有深入研究。对托福口语及美语发音有深入研究</div>
+                <div class="openClassJieshao">{{openClass.introducingCourse}}</div>
                 <div class="openClassMore"><a href="###">了解更多</a></div>
             </dt>
             <dd>
-                <h3 class="openClassTitle">2015年3月中国大陆地区托福考试口语写作小范围机经发布</h3>
-                <div class="openClassTime">课程时间：<span>2015-01-06</span>&nbsp;&nbsp;<span>08：30-11：30</span></div>
+                <h3 class="openClassTitle">{{openClass.public_className}}</h3>
+                <div class="openClassTime">课程时间：<span>{{openClass.startClassDate}}</span>&nbsp;&nbsp;<span>{{openClass.beginClassTime +'-' + openClass.endClassTime}}</span></div>
                 <div class="openClassPic">
-                    <a href="课程详细页.html"><img src="~assets/img/公开课/720x415.jpg" width="720" height="415"></a>
+                    <a href="课程详细页.html"><img :src="'http://120.27.241.26/'+openClass.public_classPicture" width="720" height="415"></a>
                 </div>
             </dd>
         </dl>
@@ -38,16 +38,40 @@
 
             }
         },
+        computed:{
+            getday: function(){
+                let dayArr = this.openClass.createDate.split('-')
+                return dayArr[2];
+            },
+            getmonth: function(){
+                let dayArr = this.openClass.createDate.split('-')
+                return dayArr[1];
+            }
+        },
+        props: {
+            openClass: {
+                type: Object,
+                default() {
+                    return {};
+                }
+            },
+            index: {
+                type: Number,
+                default() {
+                    return 0;
+                }
+            }
+        },
         methods: {
             courseDetails() {
                 this.$router.push({
-                    path:'/courseDetails',
+                    path:'/open_class/courseDetails',
                     query:{
 
                     }
                 })
             },
-        }
+        },
     }
 </script>
 

@@ -4,14 +4,8 @@
             <img src="~assets/img/dgcq.jpg" alt="">
         </div>
         <div class="abc">
-            <div class="open-class">
-                <open_class_item></open_class_item>
-            </div>
-            <div class="open-class">
-                <open_class_item></open_class_item>
-            </div>
-            <div class="page-list">
-                <tfr-page-list></tfr-page-list>
+            <div class="open-class" v-for="index in openClass[Reading].list.length">
+                <open_class_item :openClass="openClass[Reading].list[index-1]"></open_class_item>
             </div>
         </div>
     </div>
@@ -26,11 +20,38 @@
             tfrPageList,
         },
         data() {
-            return {}
+            return {
+                Reading:"Reading",
+                openClass: {
+                    Listening: {list: []},
+                    Speaking: {list: []},
+                    Reading: {list: []},
+                    Writing: {list: []},
+                    Vocabulary: {list: []},
+                    Information: {list: []},
+                    Activities: {list: []},
+                    Prediction: {list: []},
+                }
+            }
+        },
+        created() {
+            this.getOpenClassData("Reading");
         },
         mounted: function () {
+
         },
-        methods: {}
+        methods: {
+            getOpenClassData(type){
+                this.postRequest('/getOpenClassByClassType',{public_classType:type}).then( res =>{
+                    console.log(res);
+                    this.openClass[type].list.push(...res.data.openClass)
+                    console.log(this.openClass[type]);
+                    console.log(this.openClass[type].list);
+                }).catch(err =>{
+                    console.log(err);
+                })
+            }
+        }
     }
 </script>
 

@@ -59,7 +59,7 @@
         methods: {
             toLatestPublicClass(){
                 this.$router.replace({
-                    path:'/open_class',
+                    path:'/online/open_class',
                     query:{
 
                     }
@@ -102,7 +102,7 @@
     .classInfo_time span{margin-right:5px;}
     .classInfo_pic {width:42px; height:42px;padding:1px 0 0 1px; overflow:hidden; border:solid 1px #dadada; float:left; margin-right:10px;}
     .classInfo_pic img{width:41px; height:41px;}
-    .classInfo_name{overflow:hidden; font-weight:bold;}
+    .classInfo_name{overflow:hidden; font-weight:bold;display: flex}
     .classInfo_zjr{height:45px; display:inline-table; float:left; line-height:45px; margin-right:10px;}
     a.openClassZan{
         float: left;

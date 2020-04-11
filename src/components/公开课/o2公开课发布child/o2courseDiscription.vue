@@ -90,7 +90,7 @@
                 callback();
             };
             return {
-                basepath:'/img/tfrRecieve',//上传UR
+                basepath:'/upload/tfrRecieve',//上传UR
                 form: {
                     MainSpeaker: '',//讲师
                     ClassGroup:'',//课程群
@@ -151,7 +151,7 @@
                 console.log(file);
                 console.log('--------------');
                 //下面才是真正
-                this.form.public_classPicture ='openClass/' + res;
+                this.form.public_classPicture =  res;
                 this.$emit('item2click',this.form)
             },
             beforeAvatarUpload(file) {

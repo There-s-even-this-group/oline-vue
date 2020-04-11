@@ -3,7 +3,7 @@
   <tfr-detais>
       <div class="tfr_left" slot="contain">
         <div class="tfr_Details">
-          <div class="tfr_DetailsPic"><img :src="'/images/toelfman/63341006-e4a6-42d0-9f92-f1861aec7afa1-2k.png'"></div>
+          <div class="tfr_DetailsPic"><img :src="'http://120.27.241.26/'+Article[0].article_picture"></div>
           <div class="tfr_DetailsTitle">{{Article[0].article_title}}</div>
           <div class="tfr_DetailsTime">发布于：<span>22：00</span><span>{{Article[0].article_date}}</span></div>
           <div class="tfr_DetailsTime">发布人：<a href="###">{{Article[0].article_author}}</a></div>
