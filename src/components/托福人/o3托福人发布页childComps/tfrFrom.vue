@@ -80,7 +80,7 @@
         console.log(res);
         console.log('--------------');
         //下面才是真正的上传文章
-        this.formLabelAlign.article_picture = 'toelfman/' + res;
+        this.formLabelAlign.article_picture = res;
         this.formLabelAlign.article_sort = this.getarticle_sort(this.formLabelAlign.article_sort);
         console.log('正在上传的url为：'+this.formLabelAlign.article_picture);
         this.postRequest('/tfrArticle/addArticle', this.formLabelAlign).then(res => {
