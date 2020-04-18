@@ -1,6 +1,8 @@
 <template>
     <div>
-        <open_class_item></open_class_item>
+    <div class="open-class" v-for="item in openClass.list">
+        <open_class_item :openClass="item"></open_class_item>
+    </div>
     </div>
 </template>
 
@@ -11,14 +13,33 @@
             open_class_item,
         },
         data() {
-            return {}
+            return {
+                openClass: {
+                    list:[]
+                }
+
+            }
+        },
+        created() {
+            this.getOpenClassData();
         },
         mounted: function () {
         },
-        methods: {}
+        methods: {
+            getOpenClassData(){
+                this.getRequest('/getOpenClassByClassAll').then( res =>{
+                    console.log(res);
+                    this.openClass.list.push(...res.data.openClass)
+                }).catch(err =>{
+                    console.log(err);
+                })
+            }
+        }
     }
 </script>
 
 <style scoped>
-
+    .open-class{
+        display: block;
+    }
 </style>

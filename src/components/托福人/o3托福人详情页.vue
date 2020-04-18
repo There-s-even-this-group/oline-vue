@@ -12,7 +12,7 @@
             <tfr_ContentDetails :article_content="Article[0].article_content"></tfr_ContentDetails>
           </div>
           <div class="tfr_DetailsPl" >
-            <tfr_ContentDetailsPl v-if="isRouterAlive" @itemclick="addComment" :article_id="this.article_id"  ref="c1"></tfr_ContentDetailsPl>
+            <tfr_ContentDetailsPl v-if="isRouterAlive" @itemclick="addComment":article_id="this.article_id"  ref="c1"></tfr_ContentDetailsPl>
           </div>
         </div>
         <tfrPageList @NumChange="Numchange"></tfrPageList>
@@ -77,39 +77,36 @@
         },
         methods: {
           reload (){
+            this.Numchange(1)
             this.isRouterAlive = false
             this.$nextTick(function(){
               this.isRouterAlive = true
             })
+
           },
           Numchange(page){
             this.isRouterAlive = false;
-            console.log(page);
             this.$refs.c1.getCommentByArticle(page);
+            this.$refs.c1.$forceUpdate()
             this.isRouterAlive = true
           },
           getToeflmanDetailData(id) {
             this.postRequest('/tfrArticle/ArticleDetail',{id:id}).then(res =>{
-              console.log(res);
+
               this.Article.push(...res.data.list);
             }).catch(err =>{
-              console.log(err);
+
             })
           },
-          // getToelfmanDetailTitleImg(id) {
-          //   this.getRequest('/img/imgGive',{id:id}).then( res => {
-          //     console.log(res.data);
-          //     this.imgURL = '/images/'+ res.data;
-          //   })
-          // }
           addComment(notedata){
-            this.commentUser.articleID = this.article_id;
-            this.commentUser.username = 'wuyue';
-            this.commentUser.commentDate = this.getDate;
-            this.commentUser.commentContent = notedata;
-            this.postRequest('/addComment',this.commentUser).then(res => {
-              console.log(res);
-            })
+            if(notedata) {
+              this.commentUser.articleID = this.article_id;
+              this.commentUser.username = 'wuyue';
+              this.commentUser.commentDate = this.getDate;
+              this.commentUser.commentContent = notedata;
+              this.postRequest('/addComment', this.commentUser).then(res => {
+              })
+            }
           },
 
         }

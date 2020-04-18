@@ -40,12 +40,19 @@
         },
         computed:{
             getday: function(){
-                let dayArr = this.openClass.createDate.split('-')
-                return dayArr[2];
+                if(this.openClass.createDate) {
+                    let dayArr = this.openClass.createDate.split('-')
+                    return dayArr[2];
+                }
+                else
+                    return 1;
             },
-            getmonth: function(){
-                let dayArr = this.openClass.createDate.split('-')
-                return dayArr[1];
+            getmonth: function() {
+                if (this.openClass.createDate) {
+                    let dayArr = this.openClass.createDate.split('-')
+                    return dayArr[1];
+                } else
+                    return 1;
             }
         },
         props: {

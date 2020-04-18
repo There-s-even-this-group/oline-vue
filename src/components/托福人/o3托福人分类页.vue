@@ -2,9 +2,10 @@
 <div class="doc1180 paddingT20 fn-clear" v-loading="loading">
   <div class="tfr_left" v-for="(item,index) in ArticleList.list" >
     <itemDetails :tfr_Sort_type="tfr_Sort_type" :publisdate="item.article_date" :visit="item.article_visit" :collect="item.article_collect">
+      <img slot="item-img-dt" :src="'http://120.27.241.26/'+item.article_picture" >
       <template v-slot:item-title-div>
         <div class="tfr_classifyh3">
-          <a href="#" @click="todetails" style="text-decoration: none">
+          <a href="#" @click="todetails(index)" style="text-decoration: none">
             <h3 >{{item.article_title}}</h3></a>
           <div><a href="###" class="imgA"><img class="img" src="~assets/img/托福人/125x125.jpg"/> {{item.article_author}}</a>
           </div>
@@ -49,11 +50,11 @@
         this.getToeflmanSortData(this.tfr_Sort_type)
       },
       methods: {
-        todetails() {
-          this.$router.replace({
+        todetails(index) {
+          this.$router.push({
             path: '/toeflman/toelfsort/details',
             query: {
-              article_id: this.ArticleList.list.article_id
+              article_id: this.ArticleList.list[index].article_id
             }
           })
         },

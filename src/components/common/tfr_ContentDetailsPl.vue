@@ -14,7 +14,7 @@
           <dd><button class="tfr_DetailsTjpl" v-if="AreYouOK()" @click="addPL">提交评论</button></dd>
         </dl>
       </div>
-      <div class="tfr_DetailsMessage">
+      <div class="tfr_DetailsMessage" >
         <ul v-for="(item,index) in plcontent.list.slice((plcontent.page-1)*5)" v-if=" index<5">
           <li :key="item.id">
             <div class="tfr_DetailsMPic">
@@ -53,6 +53,12 @@
           return 1;
         }
       },
+      isRouterAlive:{
+        type:Boolean,
+        default() {
+          return 0;
+        }
+      }
     },
     data() {
       return {
@@ -61,12 +67,9 @@
       }
     },
     methods: {
-      abc(){
-        console.log('我在调用字方法');
-      },
       addPL() {
         this.$emit('itemclick',this.notedata)
-        this.reload();
+        this.reload()
       },
       getCommentByArticle(page){
         this.plcontent.page = page;
@@ -74,11 +77,8 @@
         //一页显示5个
         const PLCount = page * 5;
         this.getRequest('/getCommentByArticle/'+this.article_id + '/' + PLCount).then(res =>{
-          console.log(res);
           this.plcontent.list = res.data.list;
-
         })
-
       },
       AreYouOK(){
         if(getToken())
