@@ -1,7 +1,7 @@
 <template>
     <course-details>
         <div slot="lijiBaoming" class="fn-clear">
-            <a href="###" class="classInfo_ljbm">立即报名</a>
+            <a href="###" class="classInfo_ljbm" @click="baoming">立即报名</a>
             <a href="###" class="classInfo_join">加入该活动群</a>
         </div>
 
@@ -38,6 +38,25 @@
         methods: {
             ziliaoDownload(item) {
 
+            },
+            baoming(){
+                console.log(this.$route.query.public_id)
+                this.postRequest("/baomingOpenClass",{public_id:this.$route.query.public_id}).then(res =>{
+                    const h = this.$createElement;
+                    if(res.data.code == 1) {
+                        this.$notify({
+                            title: '提示信息',
+                            message: h('i', {style: 'color: teal'}, '您已加入该公开课')
+                        });
+                    }
+                    else
+                        this.$notify({
+                            title: '提示信息',
+                            message: h('i', {style: 'color: teal'}, '报名失败，请稍微再试！')
+                        });
+                }).catch(err =>{
+                    console.log(err);
+                })
             }
         }
     }

@@ -50,10 +50,10 @@
       },
       methods: {
         todetails() {
-          this.$router.push({
+          this.$router.replace({
             path: '/toeflman/toelfsort/details',
             query: {
-              tfr_Sort_type: this.tfr_Sort_type
+              article_id: this.ArticleList.list.article_id
             }
           })
         },

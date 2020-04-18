@@ -16,7 +16,7 @@
                 <h3 class="openClassTitle">{{openClass.public_className}}</h3>
                 <div class="openClassTime">课程时间：<span>{{openClass.startClassDate}}</span>&nbsp;&nbsp;<span>{{openClass.beginClassTime +'-' + openClass.endClassTime}}</span></div>
                 <div class="openClassPic">
-                    <a href="课程详细页.html"><img :src="'http://120.27.241.26/'+openClass.public_classPicture" width="720" height="415"></a>
+                   <img :src="'http://120.27.241.26/'+openClass.public_classPicture" width="720" height="415">
                 </div>
             </dd>
         </dl>
@@ -24,7 +24,7 @@
                 <slot name="imgOfenter">
                 <a href="#" class="openClassBm" @click="courseDetails">立即报名</a>
                 </slot>
-                <span>已报名人数：<b>230人</b></span>
+                <span>已报名人数：<b>{{openClass.sign_Number}}人</b></span>
             </div>
         </div>
     </div>
@@ -67,7 +67,7 @@
                 this.$router.push({
                     path:'/open_class/courseDetails',
                     query:{
-
+                        public_id:this.openClass.public_classID
                     }
                 })
             },

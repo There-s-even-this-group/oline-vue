@@ -10,7 +10,7 @@
       </div>
       <div  class="tfr_DetailsTj">
         <dl>
-          <dt v-if="AreYouOK()"><a class="tfr_DetailsTjLink">登录</a>后参与评论</dt>
+          <dt v-if="!AreYouOK()"><a class="tfr_DetailsTjLink">登录</a>后参与评论</dt>
           <dd><button class="tfr_DetailsTjpl" v-if="AreYouOK()" @click="addPL">提交评论</button></dd>
         </dl>
       </div>
@@ -85,9 +85,11 @@
         {
           return true;
         }
-        else
-          return false;
+        else {
+           return false;
+        }
       }
+
     }
   }
 </script>

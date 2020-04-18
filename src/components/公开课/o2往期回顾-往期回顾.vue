@@ -4,19 +4,9 @@
             <img src="~assets/img/dgcq.jpg" alt="">
         </div>
         <div class="center-review">
-            <div class="open-class-review">
-             <open_class_item>
-                 <a href="#" slot="imgOfenter" class="open-class-back" @click="courseDetails">去看回放</a>
-             </open_class_item>
-            </div>
-            <div class="open-class-review">
-                <open_class_item>
-                    <a href="" slot="imgOfenter" class="open-class-back" @click="courseDetails">去看回放</a>
-                </open_class_item>
-            </div>
-            <div class="open-class-review">
-                <open_class_item>
-                    <a href="" slot="imgOfenter" class="open-class-back" @click="courseDetails">去看回放</a>
+            <div class="open-class" v-for="index in openClass[Speaking].list.length">
+                <open_class_item :openClass="openClass[Speaking].list[index-1]">
+                    <a slot="imgOfenter" href="#" class="openClassBm" @click="courseDetails">立即回顾</a>
                 </open_class_item>
             </div>
         </div>
@@ -30,7 +20,22 @@
             open_class_item,
         },
         data() {
-            return {}
+            return {
+                Speaking:"Speaking",
+                openClass: {
+                    Listening: {list: []},
+                    Speaking: {list: []},
+                    Reading: {list: []},
+                    Writing: {list: []},
+                    Vocabulary: {list: []},
+                    Information: {list: []},
+                    Activities: {list: []},
+                    Prediction: {list: []},
+                }
+            }
+        },
+        created() {
+            this.getOpenClassData("Speaking");
         },
         mounted: function () {
         },
@@ -43,6 +48,16 @@
                     }
                 })
             },
+            getOpenClassData(type){
+                this.postRequest('/getOpenClassByClassType',{public_classType:type}).then( res =>{
+                    console.log(res);
+                    this.openClass[type].list.push(...res.data.openClass)
+                    console.log(this.openClass[type]);
+                    console.log(this.openClass[type].list);
+                }).catch(err =>{
+                    console.log(err);
+                })
+            }
         }
     }
 </script>
