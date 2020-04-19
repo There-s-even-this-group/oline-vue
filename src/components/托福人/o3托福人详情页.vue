@@ -12,10 +12,10 @@
             <tfr_ContentDetails :article_content="Article[0].article_content"></tfr_ContentDetails>
           </div>
           <div class="tfr_DetailsPl" >
-            <tfr_ContentDetailsPl v-if="isRouterAlive" @itemclick="addComment":article_id="this.article_id"  ref="c1"></tfr_ContentDetailsPl>
+            <tfr_ContentDetailsPl  @itemclick="addComment":article_id="this.article_id"  ref="c1"></tfr_ContentDetailsPl>
           </div>
         </div>
-        <tfrPageList @NumChange="Numchange"></tfrPageList>
+        <tfrPageList @NumChange="Numchange" ref="c2"></tfrPageList>
       </div>
     <tfr_-side-bar slot="sideBar" Rtitle="名师推荐" :titles="teacherName"  :imgURLs="imgs">
       <div slot="dd-main-info" class="dd-main-info">
@@ -50,7 +50,7 @@
       computed: {
         getDate: function() {
           let day = new Date();
-          return day.getFullYear() + '-' + day.getMonth() + '-' + day.getDay();
+          return day.getFullYear() + '-' + (day.getMonth()+1) + '-' + day.getDate();
         },
       },
       created() {
@@ -76,8 +76,8 @@
         mounted: function () {
         },
         methods: {
-          reload (){
-            this.Numchange(1)
+          reload (page){
+            this.Numchange(page)
             this.isRouterAlive = false
             this.$nextTick(function(){
               this.isRouterAlive = true
@@ -105,6 +105,7 @@
               this.commentUser.commentDate = this.getDate;
               this.commentUser.commentContent = notedata;
               this.postRequest('/addComment', this.commentUser).then(res => {
+                console.log(res);
               })
             }
           },

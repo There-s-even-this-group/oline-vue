@@ -28,7 +28,7 @@
                     {name:'/online/toeflman',navItem:'托福人'},
                     {name:'/online/open_class',navItem:'公开课'},
                     {name:'/online/group_chat',navItem:'群组聊'},
-                    {name:'/toeflman/toefmanpublic',navItem:'福利城堡'}
+                    {name:'/online/welfarecastle',navItem:'福利城堡'}
                 ],
                 adminList:[
                     {

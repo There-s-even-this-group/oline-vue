@@ -6,6 +6,8 @@ import groupchatRouter from "./moudles/groupchat";
 import openclassRouter from "./moudles/openclass";
 import systemadminRouter from "./moudles/systemadmin";
 import personalcenterRouter from "./moudles/personalcenter";
+import welfarecastleRouter from "./moudles/welfarecastle";
+
 
 Vue.use(VueRouter);
 
@@ -89,6 +91,14 @@ export const constantRouterMap = [
         meta: {
           title: '用户注册'
         }
+      },
+      {
+        path: 'welfarecastle',
+        name: 'welfarecastle',
+        component: () => import('../components/福利城堡/o6福利城堡-福利城堡'),
+        meta: {
+          title:'福利城堡'
+        }
       }
     ]
   },
@@ -119,6 +129,10 @@ export const asyncRouterMap = [
    * 个人中心路由
    */
   personalcenterRouter,
+  /**
+   * 福利城堡路由
+   */
+  welfarecastleRouter,
 
   // 404 page must be placed at the end !!!
   { path: '*', redirect: '/404', hidden: true }
