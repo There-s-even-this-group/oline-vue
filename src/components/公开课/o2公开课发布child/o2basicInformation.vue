@@ -152,7 +152,7 @@
         computed: {
             getDate: function() {
                 let day = new Date();
-                return day.getFullYear() + '-' + day.getMonth() + '-' + day.getDay();
+                return day.getFullYear() + '-' + (day.getMonth()+1) + '-' + day.getDate();
             },
         },
         created() {
