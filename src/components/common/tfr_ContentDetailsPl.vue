@@ -45,7 +45,6 @@
     created() {
       this.getCommentByArticle(1);
     },
-
     props: {
       article_id:{
         type: String,
@@ -53,12 +52,6 @@
           return 1;
         }
       },
-      isRouterAlive:{
-        type:Boolean,
-        default() {
-          return 0;
-        }
-      }
     },
     data() {
       return {
@@ -69,7 +62,7 @@
     methods: {
       addPL() {
         this.$emit('itemclick',this.notedata)
-        this.reload()
+        this.reload(this.plcontent.page)
       },
       getCommentByArticle(page){
         this.plcontent.page = page;
@@ -78,6 +71,7 @@
         const PLCount = page * 5;
         this.getRequest('/getCommentByArticle/'+this.article_id + '/' + PLCount).then(res =>{
           this.plcontent.list = res.data.list;
+          console.log(res);
         })
       },
       AreYouOK(){
