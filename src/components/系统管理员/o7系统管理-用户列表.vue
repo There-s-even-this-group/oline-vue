@@ -63,7 +63,10 @@
             <div class="block"><el-avatar :size="50" :src="circleUrl"></el-avatar></div>
           </el-table-column>
           <el-table-column prop="username" label="用户名称" width="120" align="center">
-            <template></template>
+            <template slot-scope="scope" >
+              <!--              动态绑定路由，跳转到用户对应的资料页面，和路由绑定在一起的是用户名username-->
+              <router-link :to="{path:'/FirstPage',query:{name:scope.row.username}}" style="color: #D92A11">{{ scope.row.username }}</router-link>
+            </template>
           </el-table-column>
           <el-table-column prop="sex" label="性别" width="120" align="center">
             <template></template>

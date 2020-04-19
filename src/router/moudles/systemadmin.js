@@ -20,6 +20,15 @@ const systemadminRouter={
         title:'讲师列表'
       }
     },
+
+    {
+      path:'tolfman',
+      name:'tolfman',
+      component: () => import( 'components/系统管理员/o7系统管理-托福人列表.vue'),
+      meta :{
+        title:'托福人列表'
+      }
+    },
     {
       path:'Curriculum_activities',
       name:'Curriculum_activities',

@@ -42,14 +42,18 @@
                             {
                                 name:'/system_admin/teacher',
                                 navItem:'讲师管理'
-                            }
-
+                            },
+                            {
+                                name:'/system_admin/tolfman',
+                                navItem:'托福人列表'
+                            },
                         ]
                     },
                     {
                         name:'系统管理',
                         navItem:'',
                         childNode:[
+
                             {
                                 name:'/system_admin/Curriculum_activities',
                                 navItem:'课程活动'
